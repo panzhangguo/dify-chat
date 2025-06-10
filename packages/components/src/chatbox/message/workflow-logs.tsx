@@ -159,7 +159,7 @@ export default function WorkflowLogs(props: IWorkflowLogsProps) {
 			<Collapse
 				items={collapseItems}
 				size="small"
-				className="!bg-theme-bg"
+				className="bg-theme-bg!"
 				expandIconPosition={collapseCommonProps.expandIconPosition}
 			/>
 		</div>

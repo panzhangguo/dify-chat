@@ -21,7 +21,7 @@ const HeaderSiderIcon = (props: {
 	return (
 		<div
 			className={classNames({
-				"flex-1 h-full flex items-center": true,
+				"flex-1 h-full flex items-center bg-white": true,
 				"justify-start": props.align === "left",
 				"justify-end": props.align === "right",
 			})}
@@ -39,7 +39,7 @@ export default function HeaderLayout(props: IHeaderLayoutProps) {
 	const { themeMode } = useThemeContext();
 	const isMobile = useIsMobile();
 	return (
-		<div className="h-16 flex items-center justify-between px-4">
+		<div className="h-16 flex items-center justify-between px-4 py-8">
 			{/* 🌟 Logo */}
 			<HeaderSiderIcon align="left">
 				<Logo hideText={isMobile} hideGithubIcon />

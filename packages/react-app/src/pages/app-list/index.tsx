@@ -49,10 +49,10 @@ export default function AppListPage() {
 	}, [])
 
 	return (
-		<div className="h-screen relative overflow-hidden flex flex-col bg-theme-bg w-full">
+		<div className="h-screen relative overflow-hidden flex flex-col bg-(--theme-bg-color) w-full">
 			<HeaderLayout
 				title={
-					<div className="flex items-center">
+					<div className="flex items-center py-10">
 						<LucideIcon
 							name="layout-grid"
 							size={16}
@@ -62,7 +62,7 @@ export default function AppListPage() {
 					</div>
 				}
 			/>
-			<div className="flex-1 bg-theme-main-bg rounded-3xl py-6 overflow-y-auto box-border overflow-x-hidden">
+			<div className="flex-1 bg-(--theme-main-bg-color) rounded-3xl py-6 overflow-y-auto box-border overflow-x-hidden">
 				{list?.length ? (
 					<Row
 						gutter={[16, 16]}
@@ -77,7 +77,7 @@ export default function AppListPage() {
 								>
 									<div
 										key={item.id}
-										className={`relative group p-3 bg-theme-btn-bg border border-solid border-theme-border rounded-2xl cursor-pointer hover:border-primary hover:text-primary`}
+										className={`relative group p-3 bg-(--theme-btn-bg-color) border border-solid border-theme-border rounded-2xl cursor-pointer hover:border-primary hover:text-primary`}
 									>
 										<div
 											onClick={() => {

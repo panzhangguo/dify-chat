@@ -10,19 +10,19 @@ const iconMap: Record<IIconType, React.ReactNode> = {
 	start: (
 		<LucideIcon
 			name="play"
-			className="!text-theme-text"
+			className="text-theme-text!"
 		/>
 	),
 	'question-classifier': (
 		<LucideIcon
 			name="network"
-			className="!text-theme-text"
+			className="text-theme-text!"
 		/>
 	),
 	llm: (
 		<LucideIcon
 			name="bot"
-			className="!text-theme-text"
+			className="text-theme-text!"
 		/>
 	),
 }
@@ -35,7 +35,7 @@ export default function WorkflowNodeIcon(props: IWorkflowNodeIconProps) {
 		iconMap[props.type] || (
 			<LucideIcon
 				name="bot"
-				className="!text-theme-text"
+				className="text-theme-text!"
 			/>
 		)
 	)

@@ -21,6 +21,7 @@
 		"@dify-chat/helpers": "workspace:^",
 		"@dify-chat/theme": "workspace:^",
 		"@rybbit/js": "catalog:",
+		"@tailwindcss/postcss": "catalog:",
 		"@toolkit-fe/clipboard": "catalog:",
 		"@toolkit-fe/where-am-i": "catalog:",
 		"@types/pako": "catalog:",
@@ -56,8 +57,9 @@
 		"eslint-plugin-react-hooks": "catalog:",
 		"globals": "catalog:",
 		"pako": "catalog:",
+		"postcss": "catalog:",
 		"prettier": "catalog:",
-		"prettier-plugin-tailwindcss": "^0.6.11",
+		"prettier-plugin-tailwindcss": "catalog:",
 		"tailwindcss": "catalog:",
 		"typescript": "catalog:",
 		"typescript-eslint": "catalog:"

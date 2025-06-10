@@ -34,7 +34,7 @@ export default function ActionButton(props: IActionButtonProps) {
 	const Icon = React.cloneElement(icon, {
 		// @ts-expect-error FIXME: React19 类型错误，待解决
 		className: classNames({
-			'!text-primary': active,
+			'text-primary!': active,
 			'text-theme-text': true,
 		}),
 	})

@@ -50,6 +50,9 @@ export default function App() {
 				basename="/dify-chat"
 				routes={routes}
 			>
+				{/* <div className='py-2 px-4 w-8 h-8 h-16'>
+					123
+				</div> */}
 				<DifyChatProvider
 					value={{
 						mode: 'multiApp',

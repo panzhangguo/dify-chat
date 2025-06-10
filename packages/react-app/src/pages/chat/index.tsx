@@ -11,7 +11,7 @@ export default function ChatPage() {
 	// 必须先有用户, 再开始渲染布局，因为所有界面上展示的数据都需要调用 Dify API, 而大部分的 Dify API 都需要用户标识
 	if (!user) {
 		return (
-			<div className="w-screen h-screen flex flex-col items-center justify-center bg-theme-bg">
+			<div className="w-screen h-screen flex flex-col items-center justify-center bg-(--theme-bg-color)">
 				<div className="absolute flex-col w-full h-full left-0 top-0 z-50 flex items-center justify-center">
 					<Logo hideGithubIcon />
 					<div className="text-theme-text">授权登录中...</div>

@@ -44,11 +44,13 @@ export default defineConfig({
 			},
 		],
 	},
-	tools: {
-		postcss: {
-			postcssOptions: {
-				plugins: [tailwindcss()],
-			},
-		},
-	},
+	// tools: {
+	// 	postcss: {
+	// 		postcssOptions: {
+	// 			plugins: {
+	// 				'@tailwindcss/postcss': {}
+	// 			},
+	// 		},
+	// 	},
+	// },
 })

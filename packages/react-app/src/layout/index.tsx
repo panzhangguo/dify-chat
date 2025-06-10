@@ -20,5 +20,7 @@ export default function LayoutIndex() {
 		}
 	}, [history, mode])
 
-	return <Route />
+	return <div className='py-10'>
+		<Route />
+	</div>
 }

@@ -93,7 +93,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 					<Welcome
 						variant="borderless"
 						icon={
-							<div className="flex items-center justify-center rounded-[50%] w-14 h-14 border-theme-border border-solid border-[1px] bg-theme-bg">
+							<div className="flex items-center justify-center rounded-[50%] w-14 h-14 border-theme-border border-solid border bg-theme-bg">
 								<LucideIcon
 									name="bot"
 									size={30}

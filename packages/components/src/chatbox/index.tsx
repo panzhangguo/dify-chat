@@ -304,7 +304,7 @@ export const Chatbox = (props: ChatboxProps) => {
 				</div>
 
 				<div
-					className="absolute bottom-0 bg-theme-main-bg w-full md:!w-3/4 left-1/2"
+					className="absolute bottom-0 bg-(--theme-main-bg-color) w-full md:!w-3/4 left-1/2"
 					style={{
 						transform: 'translateX(-50%)',
 					}}
@@ -323,7 +323,7 @@ export const Chatbox = (props: ChatboxProps) => {
 								})
 							}}
 							isRequesting={isRequesting}
-							className="w-full !text-theme-text"
+							className="w-full text-theme-text!"
 							uploadFileApi={(...params) => {
 								return difyApi.uploadFile(...params)
 							}}
