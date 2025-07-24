@@ -1,4 +1,4 @@
-import { CloudUploadOutlined, LinkOutlined, OpenAIOutlined } from '@ant-design/icons'
+import { CloudUploadOutlined, LinkOutlined, SendOutlined } from '@ant-design/icons'
 import { Attachments, AttachmentsProps, Sender } from '@ant-design/x'
 import { DifyApi, IFile, IUploadFileResponse } from '@dify-chat/api'
 import { useAppContext } from '@dify-chat/core'
@@ -265,7 +265,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 			prefix={
 				enableFileUpload ? (
 					// 附件上传按钮
-					<Badge dot={files.length > 0 && !open}>						
+					<Badge dot={files.length > 0 && !open}>
 						<Button
 							onClick={() => setOpen(!open)}
 							icon={<LinkOutlined className="text-theme-text" />}
@@ -325,32 +325,31 @@ export const MessageSender = (props: IMessageSenderProps) => {
 				setOpen(false)
 			}}
 			onCancel={onCancel}
-			// actions={(_, info) => {
-			// 	console.log('info', _)
-			// 	const { SendButton, LoadingButton, ClearButton, SpeechButton } = info.components
-			// 	return (
-			// 		<Space size="small">
-			// 			<Typography.Text type="secondary">
-			// 				<small>Enter发送</small>
-			// 			</Typography.Text>
-			// 			<ClearButton />
-			// 			<SpeechButton />
-			// 			{isRequesting ? (
-			// 				<LoadingButton
-			// 					type="default"
-			// 					icon={<Spin size="small" />}
-			// 					disabled
-			// 				/>
-			// 			) : (
-			// 				<SendButton
-			// 					type="primary"
-			// 					icon={<OpenAIOutlined />}
-			// 					disabled={false}
-			// 				/>
-			// 			)}
-			// 		</Space>
-			// 	)
-			// }}
+			actions={(_, info) => {
+				const { SendButton, LoadingButton, ClearButton, SpeechButton } = info.components
+				return (
+					<Space size="small">
+						<Typography.Text type="secondary">
+							<small>Enter发送</small>
+						</Typography.Text>
+						<ClearButton />
+						<SpeechButton />
+						{isRequesting ? (
+							<LoadingButton
+								type="default"
+								icon={<Spin size="small" />}
+								disabled
+							/>
+						) : (
+							<SendButton
+								type="primary"
+								icon={<SendOutlined />}
+								disabled={false}
+							/>
+						)}
+					</Space>
+				)
+			}}
 		/>
 	)
 }

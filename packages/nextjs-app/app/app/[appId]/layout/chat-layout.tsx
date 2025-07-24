@@ -504,7 +504,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 					) : (
 						<div className="w-full h-full flex items-center justify-center">
 							<Empty
-								description="暂无 Dify 应用配置，请联系管理员"
+								description="暂无客服应用配置，请联系管理员"
 								className="text-base"
 							/>
 						</div>

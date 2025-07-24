@@ -128,6 +128,7 @@ export default function MessageContent(props: IMessageContentProps) {
 				<div className={role === Roles.LOCAL || role === Roles.USER ? '' : 'md:min-w-chat-card'}>
 					<MarkdownRenderer
 						markdownText={computedContent}
+						appConfig={currentApp?.config}
 						onSubmit={onSubmit}
 					/>
 				</div>
