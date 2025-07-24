@@ -310,7 +310,7 @@ export function MarkdownRenderer(props: {
 					? src
 					: apiBase?.replace('/v1', '') + src
 			if (alt === 'video') {
-				return `<video src="${_src}" />`
+				return `<video src="${_src}" alt="${alt}" />`
 			}
 
 			return `<img src="${_src}" alt="${alt}" />`

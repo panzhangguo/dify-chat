@@ -275,6 +275,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 			}
 			style={{
 				boxShadow: isLight ? '0px -2px 12px 4px var(--theme-border-color)' : 'none',
+				borderRadius: '32px',
 			}}
 			loading={isRequesting}
 			disabled={audio2TextLoading}
