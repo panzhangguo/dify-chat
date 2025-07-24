@@ -230,7 +230,7 @@ export default function MessageFooter(props: IMessageFooterProps) {
 	]
 
 	return (
-		<Space>
+		<Space style={{ backgroundColor: 'var(--theme-bubble-bg-color)' }} className='rounded-[20px] px-1'>
 			{actionButtons.map(
 				(buttonProps, index) =>
 					!buttonProps.hidden && (

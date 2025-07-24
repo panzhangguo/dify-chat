@@ -37,7 +37,7 @@ export default function App() {
 			}}
 		>
 			<BrowserRouter
-				basename="/dify-chat"
+				basename="/acfx-chat"
 				routes={routes}
 			>
 				<LayoutIndex />

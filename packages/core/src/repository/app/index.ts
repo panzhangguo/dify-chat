@@ -45,6 +45,20 @@ export interface IDifyAppItem {
 	 */
 	requestConfig: IDifyAppRequestConfig
 	/**
+	 * 欢迎词配置
+	 */
+	welcomeConfig: {
+		/**
+		 * 标题
+		 */
+		title: string
+		/**
+		 * 应用描述
+		 */
+		description: string
+	}
+
+	/**
 	 * 回复表单配置
 	 */
 	answerForm?: {

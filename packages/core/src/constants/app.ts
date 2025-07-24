@@ -90,3 +90,12 @@ export const OpeningStatementDisplayModeOptions = [
 		value: OpeningStatementDisplayMode.Always,
 	},
 ]
+
+/**
+ * 欢迎词的配置
+ */
+
+export const WelcomeConfig = {
+	title: '你好, 我是奥晨智能客服',
+	description: '我们专注于提供开发制造塑料家具、日用品、汽摩配件、物流系列等专业成型一站式解决方案，致力于为您的项目提供高效可靠的技术支持与服务。',
+}

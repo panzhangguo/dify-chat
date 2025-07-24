@@ -194,7 +194,6 @@ export default function WorkflowLayout(props: IWorkflowLayoutProps) {
 						if (parsedData.event === EventEnum.ERROR) {
 							message.error((parsedData as unknown as IErrorEvent).message)
 						}
-						console.log('result', result)
 					}
 				}
 			})

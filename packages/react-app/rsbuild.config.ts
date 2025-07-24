@@ -2,7 +2,7 @@ import { defineConfig } from '@rsbuild/core'
 import { pluginLess } from '@rsbuild/plugin-less'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSourceBuild } from '@rsbuild/plugin-source-build'
-import path from 'path'
+import path from 'node:path'
 import tailwindcss from 'tailwindcss'
 
 const tsconfigDevPath = path.resolve(__dirname, './tsconfig.json')
@@ -33,14 +33,13 @@ export default defineConfig({
 	],
 	server: {
 		compress: false, // 解决代理后流式输出失效的问题
-		base: '/dify-chat',
+		base: '/acfx-chat',
 		port: 5200,
-		// 允许外部访问
-		host: '0.0.0.0',
+		host: '0.0.0.0', // 允许外部访问
 		proxy: [
 			{
 				// 代理 Dify API
-				target: process.env.DIFY_API_DOMAIN || 'https://api.dify.ai',
+				target: process.env.DIFY_API_DOMAIN || 'https://api.dify.ai', // 如果有dify官方账号的，
 				changeOrigin: true,
 				context: process.env.DIFY_API_PREFIX || '/v1',
 			},

@@ -203,7 +203,7 @@ export const Chatbox = (props: ChatboxProps) => {
 							}}
 						/>
 						{messageItem.created_at && (
-							<div className="ml-3 text-sm text-desc">回复时间：{messageItem.created_at}</div>
+							<div className="ml-3 text-[0.75rem] text-desc">回复时间：{messageItem.created_at}</div>
 						)}
 					</div>
 				),
@@ -331,7 +331,7 @@ export const Chatbox = (props: ChatboxProps) => {
 						/>
 					</div>
 					<div className="text-theme-desc text-sm text-center h-8 leading-8 truncate">
-						{currentApp?.site?.custom_disclaimer || '内容由 AI 生成, 仅供参考'}
+						{currentApp?.site?.custom_disclaimer}
 					</div>
 				</div>
 			</div>

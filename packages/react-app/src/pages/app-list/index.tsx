@@ -64,7 +64,7 @@ export default function AppListPage() {
 							size={16}
 							className="mr-1"
 						/>
-						应用列表
+						客服应用列表
 					</div>
 				}
 			/>

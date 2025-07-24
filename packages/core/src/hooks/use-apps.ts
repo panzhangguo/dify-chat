@@ -59,6 +59,10 @@ const DEFAULT_APP_CONTEXT: IAppContext = {
 				apiBase: '',
 				apiKey: '',
 			},
+			welcomeConfig: {
+				title: '',
+				description: '',
+			},
 		},
 		parameters: {
 			opening_statement: '',
@@ -118,7 +122,6 @@ const DEFAULT_APP_CONTEXT: IAppContext = {
 }
 
 export const AppContext = React.createContext<IAppContext>(DEFAULT_APP_CONTEXT)
-
 export const AppContextProvider = AppContext.Provider
 
 /**

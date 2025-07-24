@@ -78,6 +78,10 @@ const DEFAULT_CONTEXT_VALUE_SINGLE_APP: IDifyChatContextSingleApp = {
 			apiBase: '',
 			apiKey: '',
 		},
+		welcomeConfig: {
+			title: '',
+			description: '',
+		},
 		answerForm: {
 			enabled: false,
 			feedbackText: '',

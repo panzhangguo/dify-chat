@@ -294,7 +294,7 @@ export default function ChatboxWrapper(props: IChatboxWrapperProps) {
 	if (!currentApp) {
 		return (
 			<div className="w-full h-full flex items-center justify-center">
-				<Empty description="请先配置 Dify 应用">
+				<Empty description="请先配置应用">
 					<Button
 						type="primary"
 						onClick={handleStartConfig}

@@ -16,6 +16,8 @@
 	--theme-danger-color: #ff4d4f;
 	--theme-bubble-bg-color: #f2f4f7;
 	--theme-code-block-bg-color: #fff;
+	--theme-welcome-bg-color: linear-gradient(97deg, #f2f9fe 0%, #f7f3ff 100%);
+
 }
 
 /* 夜间模式类名 */
@@ -30,6 +32,7 @@
 	--theme-button-border-color: #c9c9c9;
 	--theme-bubble-bg-color: #424242;
 	--theme-code-block-bg-color: #222;
+	--theme-welcome-bg-color: linear-gradient(135deg, #ffffff26 14%, #ffffff0d 59%);
 }
 
 .ant-collapse {

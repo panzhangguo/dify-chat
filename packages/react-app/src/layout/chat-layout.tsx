@@ -363,22 +363,24 @@ export default function ChatLayout(props: IChatLayoutProps) {
 		>
 			<div className={`w-full h-screen flex flex-col overflow-hidden bg-theme-bg`}>
 				{/* 头部 */}
-				<HeaderLayout
-					title={renderCenterTitle?.(currentApp?.config?.info)}
-					rightIcon={
-						isMobile ? (
-							<Dropdown
-								menu={{
-									className: '!pb-3 w-[80vw]',
-									activeKey: currentConversationId,
-									items: mobileMenuItems,
-								}}
-							>
-								<MenuOutlined className="text-xl" />
-							</Dropdown>
-						) : null
-					}
-				/>
+				{false && (
+					<HeaderLayout
+						title={renderCenterTitle?.(currentApp?.config?.info)}
+						rightIcon={
+							isMobile ? (
+								<Dropdown
+									menu={{
+										className: '!pb-3 w-[80vw]',
+										activeKey: currentConversationId,
+										items: mobileMenuItems,
+									}}
+								>
+									<MenuOutlined className="text-xl" />
+								</Dropdown>
+							) : null
+						}
+					/>
+				)}
 
 				{/* Main */}
 				<div className="flex-1 overflow-hidden flex rounded-t-3xl bg-theme-main-bg">
@@ -493,7 +495,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 					) : (
 						<div className="w-full h-full flex items-center justify-center">
 							<Empty
-								description="暂无 Dify 应用配置，请联系管理员"
+								description="暂无应用配置，请联系管理员"
 								className="text-base"
 							/>
 						</div>

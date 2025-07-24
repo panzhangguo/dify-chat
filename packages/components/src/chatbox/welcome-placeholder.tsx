@@ -7,7 +7,7 @@ import { Button, FormInstance, GetProp, message, Space } from 'antd'
 import classNames from 'classnames'
 import { useMemo } from 'react'
 
-import LucideIcon from '../lucide-icon'
+// import LucideIcon from '../lucide-icon'
 import { validateAndGenErrMsgs } from '../utils'
 import AppInputWrapper from './app-input-wrapper'
 
@@ -58,7 +58,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 			// 开场白标题
 			const suggestedTitle =
 				currentApp?.parameters?.opening_statement ||
-				`你好，我是 ${currentApp?.config?.info?.name || 'Dify Chat'}`
+				`你好，我是 ${currentApp?.config?.info?.name || 'Acfx Chat'}`
 			return [
 				{
 					key: 'suggested_question',
@@ -77,7 +77,12 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 	}, [currentApp?.parameters?.suggested_questions, currentApp?.parameters?.opening_statement])
 
 	return (
-		<div className="flex justify-center w-full px-3 box-border mx-auto mb-3">
+		<div
+			className={classNames({
+				'flex justify-center items-center w-full px-3 box-border mx-auto mb-3': true,
+				'h-full': showPrompts,
+			})}
+		>
 			<Space
 				size={12}
 				direction="vertical"
@@ -90,17 +95,9 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				{showPrompts ? (
 					<Welcome
 						variant="borderless"
-						icon={
-							<div className="flex items-center justify-center rounded-[50%] w-14 h-14 border-theme-border border-solid border-[1px] bg-theme-bg">
-								<LucideIcon
-									name="bot"
-									size={30}
-									className="text-3xl text-primary dark:text-theme-text"
-								/>
-							</div>
-						}
-						title={"Hello, I'm Dify Chat"}
-						description="Base on Dify API, Dify Chat is a web app that can interact with AI."
+						icon="https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*s5sNRo5LjfQAAAAAAAAAAAAADgCCAQ/fmt.webp"
+						title={`${currentApp?.config?.welcomeConfig?.title}`}
+						description={`${currentApp?.config?.welcomeConfig?.description}`}
 						extra={
 							<Space>
 								<Button icon={<ShareAltOutlined />} />
@@ -121,7 +118,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				{showPrompts && placeholderPromptsItems.length ? (
 					<Prompts
 						// className="mt-3"
-						// title="问一问："
+						title="✨ 我可以帮您:"
 						vertical={isMobile}
 						items={placeholderPromptsItems}
 						styles={{
@@ -132,10 +129,14 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 								? {
 										width: '100%',
 										color: 'var(--theme-text-color)',
+										border: 'none',
+										backgroundImage: 'var(--theme-welcome-bg-color)',
 									}
 								: {
 										flex: 1,
 										color: 'var(--theme-text-color)',
+										border: 'none',
+										backgroundImage: 'var(--theme-welcome-bg-color)',
 									},
 						}}
 						onItemClick={async (...params) => {
