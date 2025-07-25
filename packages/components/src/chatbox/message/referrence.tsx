@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons'
 import { IRetrieverResource } from '@dify-chat/api'
 import { useIsMobile } from '@dify-chat/helpers'
+import { useLangContext } from '@dify-chat/lang'
 import { Divider, Popover, Space, Tooltip } from 'antd'
 
 interface IRetrieverResourceGroupedItem {
@@ -42,6 +43,7 @@ const MetricItem = (props: IMetricItemProps) => {
 
 const ReferenceItem = (props: IRetrieverResourceGroupedItem) => {
 	const isMobile = useIsMobile()
+	const { t } = useLangContext()
 	return (
 		<div
 			className="text-gray-500 flex items-center"
@@ -104,28 +106,28 @@ const ReferenceItem = (props: IRetrieverResourceGroupedItem) => {
 												{
 													id: `${item.segment_id}_word_count`,
 													icon: <FileWordOutlined />,
-													title: `字符: ${item.word_count}`,
+													title: `${t('chat.referrence.word_count')}: ${item.word_count}`,
 													value: item.word_count,
 													visible: !!item.word_count,
 												},
 												{
 													id: `${item.segment_id}_hit_count`,
 													icon: <AimOutlined />,
-													title: `召回次数: ${item.hit_count}`,
+													title: `${t('chat.referrence.hit_count')}: ${item.hit_count}`,
 													value: item.hit_count,
 													visible: !!item.hit_count,
 												},
 												{
 													id: `${item.segment_id}_index_node_hash`,
 													icon: <ShareAltOutlined />,
-													title: `向量哈希: ${item.index_node_hash}`,
+													title: `${t('chat.referrence.index_node_hash')}: ${item.index_node_hash}`,
 													value: item.index_node_hash?.substring(0, 7),
 													visible: !!item.index_node_hash,
 												},
 												{
 													id: `${item.segment_id}_score`,
 													icon: <StarOutlined />,
-													title: `召回得分: ${item.score}`,
+													title: `${t('chat.referrence.score')}: ${item.score}`,
 													value: item.score,
 													visible: !!item.score,
 												},
@@ -172,7 +174,7 @@ interface IMessageReferrenceProps {
  */
 export default function MessageReferrence(props: IMessageReferrenceProps) {
 	const { items } = props
-
+	const { t } = useLangContext()
 	if (!items?.length) {
 		return null
 	}
@@ -196,7 +198,7 @@ export default function MessageReferrence(props: IMessageReferrenceProps) {
 	return (
 		<div className="pb-3">
 			<div className="flex items-center text-gray-400">
-				<span className="mr-3 text-sm">引用</span>
+				<span className="mr-3 text-sm">{t('chat.referrence.name')}</span>
 				<div className="flex-1 border-gray-400 border-dashed border-0 border-t h-0" />
 			</div>
 			{groupedItems.map(item => {

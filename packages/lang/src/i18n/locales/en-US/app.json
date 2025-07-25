@@ -1,3 +1,74 @@
 {
-	"name": "Mold Doctor"
+	"appName": "Dr. Mold",
+	"welcome": {
+		"title": "Hello, I am Aochen Intelligent Customer Service",
+		"description": "We specialize in providing one-stop professional molding solutions for plastic furniture, daily necessities, automotive accessories, logistics series, and more, committed to delivering efficient and reliable technical support and services for your projects."
+	},
+	"prompts": {
+		"title": "I can help you with"
+	},
+	"opening_statement": {
+		"prefix": "Hello, I am"
+	},
+	"theme": {
+		"system": "Follow System",
+		"light": "Light",
+		"dark": "Dark"
+	},
+	"common": {
+		"theme": "Theme",
+		"rename": "Rename",
+		"cancel": "Cancel",
+		"confirm": "Confirm",
+		"ok": "OK",
+		"close": "Close",
+		"save": "Save",
+		"edit": "Edit",
+		"delete": "Delete",
+		"delete_confirm": "Confirm deletion?",
+		"delete_all_confirm": "Confirm delete all?",
+		"delete_all": "Delete All",
+		"delete_all_success": "Deletion successful",
+		"sidebar_collapse": "Collapse Sidebar",
+		"sidebar_expand": "Expand Sidebar",
+		"empty_app_description": "No application configuration, please contact administrator",
+		"copy_success": "Copy successful",
+		"operate_success": "Operation successful",
+		"enter_to_submit": "Press Enter to submit"
+	},
+	"conversation": {
+		"default_name": "New Conversation",
+		"fetch_failed": "Failed to fetch conversation list",
+		"list": "Conversation List",
+		"no_list": "No conversations",
+		"add": "Add New Conversation",
+		"edit": "Edit Conversation Name",
+		"delete": "Delete Current Conversation",
+		"delete_confirm": "Confirm delete current conversation?",
+		"delete_confirm_content": "After deletion, chat history cannot be recovered.",
+		"rename": "Rename Conversation",
+		"rename_success": "Conversation renamed successfully",
+		"history": "History Conversations"
+	},
+	"chat": {
+		"message": {
+			"created_at": "Reply Time",
+			"not_exist": "Message does not exist",
+			"empty_content": "Message content is empty",
+			"empty_content_tip": "User may have clicked the stop response button during content generation"
+		},
+		"referrence": {
+			"name": "Reference",
+			"word_count": "Characters",
+			"hit_count": "Recall Count",
+			"index_node_hash": "Vector Hash",
+			"score": "Recall Score"
+		},
+		"next_suggestions": {
+			"title": "You might also want to ask"
+		},
+		"form": {
+			"validate_fail": "Form validation failed"
+		}
+	}
 }

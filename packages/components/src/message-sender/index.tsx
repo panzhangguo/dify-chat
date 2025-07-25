@@ -2,6 +2,7 @@ import { CloudUploadOutlined, LinkOutlined, SendOutlined } from '@ant-design/ico
 import { Attachments, AttachmentsProps, Sender } from '@ant-design/x'
 import { DifyApi, IFile, IUploadFileResponse } from '@dify-chat/api'
 import { useAppContext } from '@dify-chat/core'
+import { useLangContext } from '@dify-chat/lang'
 import { useThemeContext } from '@dify-chat/theme'
 import { Badge, Button, Flex, GetProp, GetRef, message } from 'antd'
 import { Space, Spin, Typography } from 'antd'
@@ -61,7 +62,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 	const attachmentsRef = useRef<GetRef<typeof Attachments>>(null)
 	const senderRef = useRef<GetRef<typeof Sender>>(null)
 	const { isLight } = useThemeContext()
-
+	const { t } = useLangContext()
 	const onChange = (value: string) => {
 		setContent(value)
 	}
@@ -349,7 +350,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 						</div>
 						<Space>
 							<Typography.Text type="secondary">
-								<small className="text-theme-desc">Enter发送</small>
+								<small className="text-theme-desc">{t('common.enter_to_submit')}</small>
 							</Typography.Text>
 							<ClearButton />
 							{enableSpeechToText && <SpeechButton />}
@@ -370,7 +371,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 					</Flex>
 				)
 			}}
-			actions={(_, info) => {
+			actions={(_, _info) => {
 				return <></>
 			}}
 		/>

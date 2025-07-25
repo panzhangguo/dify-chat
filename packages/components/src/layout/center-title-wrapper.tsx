@@ -5,7 +5,7 @@ import classNames from 'classnames'
  */
 export default function CenterTitleWrapper(props: { children: React.ReactNode }) {
 	return (
-		<div className="flex h-full items-center flex-[4] overflow-hidden justify-center font-semibold">
+		<div className="flex h-full items-center flex-[1] overflow-hidden justify-center font-semibold">
 			<div
 				className={classNames({
 					'flex items-center rounded-3xl py-2 px-4 text-sm overflow-hidden': true,

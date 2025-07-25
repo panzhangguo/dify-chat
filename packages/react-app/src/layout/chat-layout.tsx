@@ -1,21 +1,18 @@
 import {
-	DiscordFilled,
 	EditOutlined,
 	MenuOutlined,
-	MessageTwoTone,
 	MinusCircleOutlined,
 	PlusCircleOutlined,
 	PlusOutlined,
-	SendOutlined,
 	SmileOutlined,
-	SmileTwoTone,
 } from '@ant-design/icons'
 import { DifyApi, IConversationItem } from '@dify-chat/api'
 import { AppIcon, AppInfo, ConversationList, LucideIcon } from '@dify-chat/components'
 import { HeaderLayout } from '@dify-chat/components'
 import { ConversationsContextProvider, IDifyAppItem, useAppContext } from '@dify-chat/core'
 import { generateUuidV4, isTempId, useIsMobile } from '@dify-chat/helpers'
-import { ThemeModeEnum, ThemeModeLabelEnum, useThemeContext } from '@dify-chat/theme'
+import { useLangContext } from '@dify-chat/lang'
+import { ThemeModeEnum, useThemeContext } from '@dify-chat/theme'
 import {
 	Button,
 	Divider,
@@ -36,7 +33,7 @@ import { useSearchParams } from 'pure-react-router'
 import React, { useEffect, useMemo, useState } from 'react'
 
 import ChatboxWrapper from '@/components/chatbox-wrapper'
-import { DEFAULT_CONVERSATION_NAME } from '@/constants'
+// import { DEFAULT_CONVERSATION_NAME } from '@/constants'
 import { useLatest } from '@/hooks/use-latest'
 
 interface IChatLayoutProps {
@@ -66,6 +63,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 	const { extComponents, initLoading, difyApi } = props
 	const [sidebarOpen, setSidebarOpen] = useState(true)
 	const { themeMode, setThemeMode } = useThemeContext()
+	const { t } = useLangContext()
 	const { appLoading, currentApp } = useAppContext()
 	const [renameForm] = Form.useForm()
 	const [conversations, setConversations] = useState<IConversationItem[]>([])
@@ -121,7 +119,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 			}
 		} catch (error) {
 			console.error(error)
-			message.error(`获取会话列表失败: ${error}`)
+			message.error(`${t('conversation.fetch_failed')}: ${error}`)
 		} finally {
 			setCoversationListLoading(false)
 		}
@@ -138,7 +136,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 			return [
 				{
 					id: newKey,
-					name: DEFAULT_CONVERSATION_NAME,
+					name: t('conversation.default_name'),
 					created_at: dayjs().valueOf(),
 					inputs: {},
 					introduction: '',
@@ -173,7 +171,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 		Modal.confirm({
 			centered: true,
 			destroyOnClose: true,
-			title: '编辑对话名称',
+			title: t('conversation.edit'),
 			content: (
 				<Form
 					form={renameForm}
@@ -188,7 +186,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 				await renameForm.validateFields()
 				const values = await renameForm.validateFields()
 				await onRenameConversation(currentConversationId, values.name)
-				message.success('对话重命名成功')
+				message.success(`${t('conversation.rename_success')}`)
 			},
 		})
 	}
@@ -227,7 +225,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 			{
 				key: 'add_conversation',
 				icon: <PlusCircleOutlined />,
-				label: '新增对话',
+				label: t('conversation.add'),
 				disabled: isTempId(currentConversationId),
 				onClick: () => {
 					onAddConversation()
@@ -236,7 +234,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 			{
 				key: 'rename_conversation',
 				icon: <EditOutlined />,
-				label: '编辑对话名称',
+				label: t('conversation.edit'),
 				disabled: isTempId(currentConversationId),
 				onClick: () => {
 					handleRenameConversation()
@@ -245,20 +243,20 @@ export default function ChatLayout(props: IChatLayoutProps) {
 			{
 				key: 'delete_conversation',
 				icon: <MinusCircleOutlined />,
-				label: '删除当前对话',
+				label: t('conversation.delete'),
 				disabled: isTempId(currentConversationId),
 				danger: true,
 				onClick: () => {
 					Modal.confirm({
 						centered: true,
-						title: '确定删除当前对话？',
-						content: '删除后，聊天记录将不可恢复。',
-						okText: '删除',
-						cancelText: '取消',
+						title: t('conversation.delete_confirm'),
+						content: t('conversation.delete_confirm_content'),
+						okText: t('common.confirm'),
+						cancelText: t('common.cancel'),
 						onOk: async () => {
 							// 执行删除操作
 							await onDeleteConversation(currentConversationId)
-							message.success('删除成功')
+							message.success(t('common.delete_success'))
 						},
 					})
 				},
@@ -284,21 +282,21 @@ export default function ChatLayout(props: IChatLayoutProps) {
 									setThemeMode(e.target.value as ThemeModeEnum)
 								}}
 							>
-								<Radio value={ThemeModeEnum.SYSTEM}>{ThemeModeLabelEnum.SYSTEM}</Radio>
-								<Radio value={ThemeModeEnum.LIGHT}>{ThemeModeLabelEnum.LIGHT}</Radio>
-								<Radio value={ThemeModeEnum.DARK}>{ThemeModeLabelEnum.DARK}</Radio>
+								<Radio value={ThemeModeEnum.SYSTEM}>{t('theme.system')}</Radio>
+								<Radio value={ThemeModeEnum.LIGHT}>{t('theme.light')}</Radio>
+								<Radio value={ThemeModeEnum.DARK}>{t('theme.dark')}</Radio>
 							</Radio.Group>
 						),
 					},
 				],
-				label: '主题',
+				label: t('common.theme'),
 			},
 			{
 				type: 'divider',
 			},
 			{
 				type: 'group',
-				label: '对话列表',
+				label: t('conversation.list'),
 				children: conversations?.length
 					? conversations.map(item => {
 							return {
@@ -312,7 +310,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 					: [
 							{
 								key: 'no_conversation',
-								label: '暂无对话',
+								label: t('conversation.no_list'),
 								disabled: true,
 							},
 						],
@@ -350,7 +348,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 					<div className="w-full h-full flex items-center justify-center">
 						<Empty
 							className="pt-6"
-							description="暂无会话"
+							description={t('conversation.no_list')}
 						/>
 					</div>
 				)}
@@ -414,10 +412,12 @@ export default function ChatLayout(props: IChatLayoutProps) {
 													className="h-10 leading-10 rounded-lg border border-solid border-gray-200 mt-3 mx-4 text-theme-text "
 													icon={<PlusOutlined className="" />}
 												>
-													新增对话
+													{t('conversation.add')}
 												</Button>
 												<Divider orientation="left"></Divider>
-												<div className="text-theme-desc text-[0.75rem] pb-3 pl-4">历史会话</div>
+												<div className="text-theme-desc text-[0.75rem] pb-3 pl-4">
+													{t('conversation.history')}
+												</div>
 											</>
 										) : null}
 										{/* 🌟 对话管理 */}
@@ -432,7 +432,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 
 										{/* 新增对话 */}
 										<Tooltip
-											title="新增对话"
+											title={t('conversation.add')}
 											placement="right"
 										>
 											<div className="text-theme-text my-1.5 hover:text-primary flex items-center">
@@ -454,7 +454,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 													{conversationListWithEmpty}
 												</div>
 											}
-											title="历史会话列表"
+											title={t('conversation.history')}
 											placement="rightTop"
 										>
 											{/* 必须包裹一个 HTML 标签才能正常展示 Popover */}
@@ -472,7 +472,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 
 								<div className="border-0 border-t border-solid border-theme-splitter flex items-center justify-center h-12">
 									<Tooltip
-										title={sidebarOpen ? '折叠侧边栏' : '展开侧边栏'}
+										title={sidebarOpen ? t('common.sidebar_collapse') : t('common.sidebar_expand')}
 										placement="right"
 									>
 										<div className="flex items-center justify-center">
@@ -503,7 +503,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 					) : (
 						<div className="w-full h-full flex items-center justify-center">
 							<Empty
-								description="暂无应用配置，请联系管理员"
+								description={t('common.empty_app_description')}
 								className="text-base"
 							/>
 						</div>

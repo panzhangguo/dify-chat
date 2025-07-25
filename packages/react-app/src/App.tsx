@@ -1,6 +1,9 @@
 import { initResponsiveConfig } from '@dify-chat/helpers'
+import { LangEnum, useLangContext } from '@dify-chat/lang'
 import { useThemeContext } from '@dify-chat/theme'
 import { theme as antdTheme, ConfigProvider } from 'antd'
+import enUS from 'antd/locale/en_US'
+import zhCN from 'antd/locale/zh_CN'
 import { BrowserRouter, type IRoute } from 'pure-react-router'
 
 import { difyChatRuntimeConfig } from '@/config/global'
@@ -29,12 +32,13 @@ const routes: IRoute[] = [
  */
 export default function App() {
 	const { isDark } = useThemeContext()
-
+	const { lang } = useLangContext()
 	return (
 		<ConfigProvider
 			theme={{
 				algorithm: isDark ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
 			}}
+			locale={lang === LangEnum.ZH_CN ? zhCN : enUS}
 		>
 			<BrowserRouter
 				basename="/acfx-chat"

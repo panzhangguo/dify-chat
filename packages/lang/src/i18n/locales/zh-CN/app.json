@@ -1,3 +1,74 @@
 {
-	"name": "模博士"
+	"appName": "模博士",
+	"welcome": {
+		"title": "你好, 我是奥晨智能客服",
+		"description": "我们专注于提供开发制造塑料家具、日用品、汽摩配件、物流系列等专业成型一站式解决方案，致力于为您的项目提供高效可靠的技术支持与服务。"
+	},
+	"prompts": {
+		"title": "我可以帮您"
+	},
+	"opening_statement": {
+		"prefix": "你好，我是"
+	},
+	"theme": {
+		"system": "跟随系统",
+		"light": "亮色",
+		"dark": "暗黑"
+	},
+	"common": {
+		"theme": "主题",
+		"rename": "重命名",
+		"cancel": "取消",
+		"confirm": "确定",
+		"ok": "确定",
+		"close": "关闭",
+		"save": "保存",
+		"edit": "编辑",
+		"delete": "删除",
+		"delete_confirm": "确定删除？",
+		"delete_all_confirm": "确定删除所有？",
+		"delete_all": "删除所有",
+		"delete_all_success": "删除成功",
+		"sidebar_collapse": "折叠侧边栏",
+		"sidebar_expand": "展开侧边栏",
+		"empty_app_description": "暂无应用配置，请联系管理员",
+		"copy_success": "复制成功",
+		"operate_success": "操作成功",
+		"enter_to_submit": "`Enter`发送"
+	},
+	"conversation": {
+		"default_name": "新会话",
+		"fetch_failed": "获取对话列表失败",
+		"list": "对话列表",
+		"no_list": "暂无会话",
+		"add": "新增对话",
+		"edit": "编辑对话名称",
+		"delete": "删除当前对话",
+		"delete_confirm": "确定删除当前对话？",
+		"delete_confirm_content": "删除后，聊天记录将不可恢复。",
+		"rename": "重命名对话",
+		"rename_success": "对话重命名成功",
+		"history": "历史会话"
+	},
+	"chat": {
+		"message": {
+			"created_at": "回复时间",
+			"not_exist": "消息不存在",
+			"empty_content": "消息内容为空",
+			"empty_content_tip": "可能是用户在生成内容的过程中点击了停止响应按钮"
+		},
+		"referrence": {
+			"name": "引用",
+			"word_count": "字符",
+			"hit_count": "召回次数",
+			"index_node_hash": "向量哈希",
+			"score": "召回得分"
+		},
+		"next_suggestions": {
+			"title": "你可能还想问"
+		},
+		"form": {
+			"validate_fail": "表单校验失败"
+		}
+	}
 }

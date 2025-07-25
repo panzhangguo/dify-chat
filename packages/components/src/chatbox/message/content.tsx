@@ -1,6 +1,7 @@
 import { QuestionCircleOutlined, WarningOutlined } from '@ant-design/icons'
 import { IFile, IMessageItem4Render } from '@dify-chat/api'
 import { AppModeEnums, Roles, useAppContext } from '@dify-chat/core'
+import { useLangContext } from '@dify-chat/lang'
 import { Tooltip } from 'antd'
 import { useMemo } from 'react'
 
@@ -47,8 +48,8 @@ export default function MessageContent(props: IMessageContentProps) {
 			role,
 		},
 	} = props
+	const { t } = useLangContext()
 	const { currentApp } = useAppContext()
-
 	const computedContent = useMemo(() => {
 		const likelyJSON = content.startsWith('{') && content.endsWith('}')
 		// 处理回复表单的自动生成消息
@@ -89,8 +90,8 @@ export default function MessageContent(props: IMessageContentProps) {
 		return (
 			<p className="text-orange-600">
 				<WarningOutlined className="mr-2" />
-				<span>消息内容为空</span>
-				<Tooltip title="可能是用户在生成内容的过程中点击了停止响应按钮">
+				<span>{t('chat.message.empty_content')}</span>
+				<Tooltip title={t('chat.message.empty_content_tip')}>
 					<QuestionCircleOutlined className="ml-2" />
 				</Tooltip>
 			</p>

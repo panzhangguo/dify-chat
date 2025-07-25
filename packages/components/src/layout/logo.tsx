@@ -1,5 +1,5 @@
 import { GithubOutlined } from '@ant-design/icons'
-import { AppName } from '@dify-chat/core'
+import { useLangContext } from '@dify-chat/lang'
 import { Button } from 'antd'
 
 import LogoImage from '../assets/images/logo.png'
@@ -41,7 +41,7 @@ interface ILogoProps {
 
 export const Logo = (props: ILogoProps) => {
 	const { hideGithubIcon, hideText } = props
-
+	const { t } = useLangContext()
 	return (
 		<div className="flex h-16 items-center justify-start !py-0 box-border">
 			<div className="h-full flex items-center flex-1 overflow-hidden">
@@ -53,7 +53,7 @@ export const Logo = (props: ILogoProps) => {
 				/>
 				{!hideText ? (
 					<span className="inline-block my-0 ml-3 font-bold text-lg text-theme-text tracking-[0.06rem]">
-						{AppName}
+						{t('appName')}
 					</span>
 				) : null}
 			</div>

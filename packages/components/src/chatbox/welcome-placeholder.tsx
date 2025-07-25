@@ -3,6 +3,7 @@ import { Prompts, Welcome } from '@ant-design/x'
 import { DifyApi } from '@dify-chat/api'
 import { useAppContext } from '@dify-chat/core'
 import { useIsMobile } from '@dify-chat/helpers'
+import { useLangContext } from '@dify-chat/lang'
 import { Button, FormInstance, GetProp, message, Space } from 'antd'
 import classNames from 'classnames'
 import { useMemo } from 'react'
@@ -49,7 +50,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 	const { onPromptItemClick, showPrompts, uploadFileApi } = props
 	const isMobile = useIsMobile()
 	const { currentApp } = useAppContext()
-
+	const { t } = useLangContext()
 	const placeholderPromptsItems: GetProp<typeof Prompts, 'items'> = useMemo(() => {
 		if (
 			currentApp?.parameters?.opening_statement ||
@@ -58,7 +59,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 			// 开场白标题
 			const suggestedTitle =
 				currentApp?.parameters?.opening_statement ||
-				`你好，我是 ${currentApp?.config?.info?.name || 'Acfx Chat'}`
+				`${t('opening_statement.prefix')} ${currentApp?.config?.info?.name || t('appName')}`
 			return [
 				{
 					key: 'suggested_question',
@@ -96,8 +97,8 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 					<Welcome
 						variant="borderless"
 						icon={`${currentApp?.config?.welcomeConfig?.aiIconUrl}`}
-						title={`${currentApp?.config?.welcomeConfig?.title}`}
-						description={`${currentApp?.config?.welcomeConfig?.description}`}
+						title={t('welcome.title')}
+						description={t('welcome.description')}
 						extra={
 							<Space>
 								<Button icon={<ShareAltOutlined />} />
@@ -117,7 +118,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				{showPrompts && placeholderPromptsItems.length ? (
 					<Prompts
 						// className="mt-3"
-						title="✨ 我可以帮您:"
+						title={`✨ ${t('prompts.title')}`}
 						vertical={isMobile}
 						items={placeholderPromptsItems}
 						styles={{
@@ -149,16 +150,6 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 						}}
 					/>
 				) : null}
-				{/* <video
-					width="320"
-					height="240"
-					controls
-				>
-					<source
-						src="https://qidian-test-dev-1313545216.cos.ap-shanghai.myqcloud.com/001_%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B.mp4"
-						type="video/mp4"
-					/>
-				</video> */}
 			</Space>
 		</div>
 	)

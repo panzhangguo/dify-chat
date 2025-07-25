@@ -1,4 +1,5 @@
 import { DifyApi, IGetAppParametersResponse, IRating } from '@dify-chat/api'
+import { useLangContext } from '@dify-chat/lang'
 import { copyToClipboard } from '@toolkit-fe/clipboard'
 import { useRequest, useSetState } from 'ahooks'
 import { message as antdMessage, Space } from 'antd'
@@ -79,6 +80,7 @@ export default function MessageFooter(props: IMessageFooterProps) {
 		onRegenerateMessage,
 	} = props
 
+	const { t } = useLangContext()
 	const isLiked = rating === 'like'
 	const isDisLiked = rating === 'dislike'
 	const [loading, setLoading] = useSetState({
@@ -102,7 +104,7 @@ export default function MessageFooter(props: IMessageFooterProps) {
 		{
 			manual: true,
 			onSuccess() {
-				antdMessage.success('操作成功')
+				antdMessage.success(`${t('common.operate_success')}`)
 				callback?.()
 			},
 			onFinally() {
@@ -167,7 +169,7 @@ export default function MessageFooter(props: IMessageFooterProps) {
 			icon: <LucideIcon name="copy" />,
 			onClick: async () => {
 				await copyToClipboard(messageContent)
-				antdMessage.success('复制成功')
+				antdMessage.success(`${t('common.copy_success')}`)
 			},
 			active: false,
 			loading: false,
@@ -230,7 +232,10 @@ export default function MessageFooter(props: IMessageFooterProps) {
 	]
 
 	return (
-		<Space style={{ backgroundColor: 'var(--theme-bubble-bg-color)' }} className='rounded-[20px] px-1'>
+		<Space
+			style={{ backgroundColor: 'var(--theme-bubble-bg-color)' }}
+			className="rounded-[20px] px-1"
+		>
 			{actionButtons.map(
 				(buttonProps, index) =>
 					!buttonProps.hidden && (

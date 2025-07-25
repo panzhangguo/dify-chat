@@ -1,5 +1,6 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Conversations } from '@ant-design/x'
+import { useLangContext } from '@dify-chat/lang'
 import { Form, Input, message, Modal } from 'antd'
 
 interface IConversationItem {
@@ -36,7 +37,7 @@ interface IConversationListProps {
 export const ConversationList = (props: IConversationListProps) => {
 	const { deleteConversationPromise, renameConversationPromise, items, activeKey, onActiveChange } =
 		props
-
+	const { t } = useLangContext()
 	const [renameForm] = Form.useForm()
 
 	/**
@@ -58,7 +59,7 @@ export const ConversationList = (props: IConversationListProps) => {
 		})
 		Modal.confirm({
 			destroyOnClose: true,
-			title: '编辑对话名称',
+			title: t('conversation.edit'),
 			content: (
 				<Form
 					form={renameForm}
@@ -73,7 +74,7 @@ export const ConversationList = (props: IConversationListProps) => {
 				await renameForm.validateFields()
 				const values = await renameForm.validateFields()
 				await renameConversationPromise(conversation.key, values.name)
-				message.success('对话重命名成功')
+				message.success(`${t('conversation.rename_success')}`)
 			},
 		})
 	}
@@ -87,12 +88,12 @@ export const ConversationList = (props: IConversationListProps) => {
 			menu={conversation => ({
 				items: [
 					{
-						label: '重命名',
+						label: t('common.rename'),
 						key: 'rename',
 						icon: <EditOutlined />,
 					},
 					{
-						label: '删除',
+						label: t('common.delete'),
 						key: 'delete',
 						icon: <DeleteOutlined />,
 						danger: true,

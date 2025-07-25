@@ -1,7 +1,8 @@
 import { Dropdown } from 'antd';
 import { useThemeContext } from '../hooks';
-import { ThemeModeEnum, ThemeModeLabelEnum } from '../constants';
+import { ThemeModeEnum } from '../constants';
 import { DynamicIcon } from 'lucide-react/dynamic';
+import { useLangContext } from '@dify-chat/lang';
 
 interface IThemeSelectorProps {
 	children?: React.ReactNode;
@@ -13,7 +14,7 @@ interface IThemeSelectorProps {
 export default function ThemeSelector(props: IThemeSelectorProps) {
 	const { children } = props;
 	const { themeMode, setThemeMode } = useThemeContext();
-
+	const { t } = useLangContext();
 	return (
 		<Dropdown
 			placement="bottomRight"
@@ -23,19 +24,19 @@ export default function ThemeSelector(props: IThemeSelectorProps) {
 					{
 						type: 'item',
 						key: ThemeModeEnum.SYSTEM,
-						label: ThemeModeLabelEnum.SYSTEM,
+						label: t('theme.system'),
 						icon: <DynamicIcon name="screen-share" />,
 					},
 					{
 						type: 'item',
 						key: ThemeModeEnum.LIGHT,
-						label: ThemeModeLabelEnum.LIGHT,
+						label: t('theme.light'),
 						icon: <DynamicIcon name="sun" />,
 					},
 					{
 						type: 'item',
 						key: ThemeModeEnum.DARK,
-						label: ThemeModeLabelEnum.DARK,
+						label: t('theme.dark'),
 						icon: <DynamicIcon name="moon-star" />,
 					},
 				],
