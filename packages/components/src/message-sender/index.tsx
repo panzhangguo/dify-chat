@@ -1,4 +1,4 @@
-import { CloudUploadOutlined, LinkOutlined, OpenAIOutlined } from '@ant-design/icons'
+import { CloudUploadOutlined, LinkOutlined, OpenAIOutlined, SendOutlined } from '@ant-design/icons'
 import { Attachments, AttachmentsProps, Sender } from '@ant-design/x'
 import { DifyApi, IFile, IUploadFileResponse } from '@dify-chat/api'
 import { useAppContext } from '@dify-chat/core'
@@ -6,6 +6,7 @@ import { useThemeContext } from '@dify-chat/theme'
 import { Badge, Button, GetProp, GetRef, message } from 'antd'
 import { Space, Spin, Typography } from 'antd'
 import { RcFile } from 'antd/es/upload'
+import { SendHorizonalIcon, SendIcon } from 'lucide-react'
 import { useMemo, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 
@@ -66,6 +67,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 		setContent(value)
 	}
 
+	console.log('currentApp', currentApp?.parameters)
 	const allowedFileTypes = useMemo(() => {
 		if (!currentApp?.parameters?.file_upload) {
 			return []
@@ -256,6 +258,9 @@ export const MessageSender = (props: IMessageSenderProps) => {
 	// 是否允许文件上传
 	const enableFileUpload = currentApp?.parameters?.file_upload?.enabled
 
+	// 是否开启语音转文字
+	const enableSpeechToText = currentApp?.parameters?.speech_to_text?.enabled
+
 	return (
 		<Sender
 			allowSpeech={allowSpeechConfig}
@@ -265,7 +270,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 			prefix={
 				enableFileUpload ? (
 					// 附件上传按钮
-					<Badge dot={files.length > 0 && !open}>						
+					<Badge dot={files.length > 0 && !open}>
 						<Button
 							onClick={() => setOpen(!open)}
 							icon={<LinkOutlined className="text-theme-text" />}
@@ -325,32 +330,31 @@ export const MessageSender = (props: IMessageSenderProps) => {
 				setOpen(false)
 			}}
 			onCancel={onCancel}
-			// actions={(_, info) => {
-			// 	console.log('info', _)
-			// 	const { SendButton, LoadingButton, ClearButton, SpeechButton } = info.components
-			// 	return (
-			// 		<Space size="small">
-			// 			<Typography.Text type="secondary">
-			// 				<small>Enter发送</small>
-			// 			</Typography.Text>
-			// 			<ClearButton />
-			// 			<SpeechButton />
-			// 			{isRequesting ? (
-			// 				<LoadingButton
-			// 					type="default"
-			// 					icon={<Spin size="small" />}
-			// 					disabled
-			// 				/>
-			// 			) : (
-			// 				<SendButton
-			// 					type="primary"
-			// 					icon={<OpenAIOutlined />}
-			// 					disabled={false}
-			// 				/>
-			// 			)}
-			// 		</Space>
-			// 	)
-			// }}
+			actions={(_, info) => {
+				const { SendButton, LoadingButton, ClearButton, SpeechButton } = info.components
+				return (
+					<Space size="small">
+						<Typography.Text type="secondary">
+							<small className="text-theme-border">Enter发送</small>
+						</Typography.Text>
+						<ClearButton />
+						{enableSpeechToText && <SpeechButton />}
+						{isRequesting ? (
+							<LoadingButton
+								type="default"
+								icon={<Spin size="small" />}
+								disabled
+							/>
+						) : (
+							<SendButton
+								type="primary"
+								icon={<SendOutlined size={18} />}
+								disabled={false}
+							/>
+						)}
+					</Space>
+				)
+			}}
 		/>
 	)
 }
