@@ -1,4 +1,4 @@
-import { CloudUploadOutlined, LinkOutlined, OpenAIOutlined, SendOutlined } from '@ant-design/icons'
+import { CloudUploadOutlined, LinkOutlined, SendOutlined } from '@ant-design/icons'
 import { Attachments, AttachmentsProps, Sender } from '@ant-design/x'
 import { DifyApi, IFile, IUploadFileResponse } from '@dify-chat/api'
 import { useAppContext } from '@dify-chat/core'
@@ -6,7 +6,6 @@ import { useThemeContext } from '@dify-chat/theme'
 import { Badge, Button, GetProp, GetRef, message } from 'antd'
 import { Space, Spin, Typography } from 'antd'
 import { RcFile } from 'antd/es/upload'
-import { SendHorizonalIcon, SendIcon } from 'lucide-react'
 import { useMemo, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 
@@ -280,6 +279,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 			}
 			style={{
 				boxShadow: isLight ? '0px -2px 12px 4px var(--theme-border-color)' : 'none',
+				borderRadius: '32px',
 			}}
 			loading={isRequesting}
 			disabled={audio2TextLoading}
@@ -348,7 +348,7 @@ export const MessageSender = (props: IMessageSenderProps) => {
 						) : (
 							<SendButton
 								type="primary"
-								icon={<SendOutlined size={18} />}
+								icon={<SendOutlined />}
 								disabled={false}
 							/>
 						)}

@@ -6,10 +6,10 @@ import classNames from 'classnames'
 import React from 'react'
 
 import CenterTitleWrapper from './center-title-wrapper'
-import { GithubIcon, Logo } from './logo'
+import { Logo } from './logo'
 
 interface IHeaderLayoutProps {
-	title: React.ReactNode
+	title?: React.ReactNode
 	rightIcon?: React.ReactNode
 }
 
@@ -67,7 +67,7 @@ export default function HeaderLayout(props: IHeaderLayoutProps) {
 								/>
 							</div>
 						</ThemeSelector>
-						{false && <GithubIcon />}
+						{/* <GithubIcon /> */}
 					</Space>
 				)}
 			</HeaderSiderIcon>

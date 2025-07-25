@@ -5,6 +5,7 @@ import { OpeningStatementDisplayMode, Roles, useAppContext } from '@dify-chat/co
 import { isTempId, useIsMobile } from '@dify-chat/helpers'
 import { useThemeContext } from '@dify-chat/theme'
 import { FormInstance, GetProp, message } from 'antd'
+import classNames from 'classnames'
 import { useDeferredValue, useEffect, useMemo, useRef } from 'react'
 
 import LucideIcon from '../lucide-icon'
@@ -203,7 +204,9 @@ export const Chatbox = (props: ChatboxProps) => {
 							}}
 						/>
 						{messageItem.created_at && (
-							<div className="ml-3 text-[0.75rem] text-desc">回复时间：{messageItem.created_at}</div>
+							<div className="ml-3 text-[0.75rem] text-desc">
+								回复时间：{messageItem.created_at}
+							</div>
 						)}
 					</div>
 				),
@@ -322,7 +325,10 @@ export const Chatbox = (props: ChatboxProps) => {
 								})
 							}}
 							isRequesting={isRequesting}
-							className="w-full !text-theme-text"
+							className={classNames({
+								'w-full !text-theme-text': true,
+								'after:bg-[image:var(--theme-welcome-bg-color)]': isDark,
+							})}
 							uploadFileApi={(...params) => {
 								return difyApi.uploadFile(...params)
 							}}

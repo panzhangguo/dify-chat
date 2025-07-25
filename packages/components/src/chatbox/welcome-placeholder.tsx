@@ -79,7 +79,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 	return (
 		<div
 			className={classNames({
-				'flex justify-center items-center w-full px-3 box-border mx-auto mb-3': true,
+				'flex justify-center items-center w-full px-3 box-border mx-auto': true,
 				'h-full': showPrompts,
 			})}
 		>
@@ -114,7 +114,6 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 					entryForm={props.entryForm}
 					uploadFileApi={uploadFileApi!}
 				/>
-
 				{showPrompts && placeholderPromptsItems.length ? (
 					<Prompts
 						// className="mt-3"
@@ -150,6 +149,16 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 						}}
 					/>
 				) : null}
+				{/* <video
+					width="320"
+					height="240"
+					controls
+				>
+					<source
+						src="https://qidian-test-dev-1313545216.cos.ap-shanghai.myqcloud.com/001_%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B.mp4"
+						type="video/mp4"
+					/>
+				</video> */}
 			</Space>
 		</div>
 	)

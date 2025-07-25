@@ -57,7 +57,7 @@ interface IChatLayoutProps {
 }
 
 export default function ChatLayout(props: IChatLayoutProps) {
-	const { extComponents, renderCenterTitle, initLoading, difyApi } = props
+	const { extComponents, initLoading, difyApi } = props
 	const [sidebarOpen, setSidebarOpen] = useState(true)
 	const { themeMode, setThemeMode } = useThemeContext()
 	const { appLoading, currentApp } = useAppContext()
@@ -364,7 +364,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 			<div className={`w-full h-screen flex flex-col overflow-hidden bg-theme-bg`}>
 				{/* 头部 */}
 				<HeaderLayout
-					title={renderCenterTitle?.(currentApp?.config?.info)}
+					// title={renderCenterTitle?.(currentApp?.config?.info)}
 					rightIcon={
 						isMobile ? (
 							<Dropdown

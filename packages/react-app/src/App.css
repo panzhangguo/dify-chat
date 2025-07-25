@@ -17,7 +17,6 @@
 	--theme-bubble-bg-color: #f2f4f7;
 	--theme-code-block-bg-color: #fff;
 	--theme-welcome-bg-color: linear-gradient(97deg, #f2f9fe 0%, #f7f3ff 100%);
-
 }
 
 /* 夜间模式类名 */
@@ -49,7 +48,7 @@
 .ant-bubble-list {
 	.ant-bubble {
 		.ant-bubble-content {
-			padding-top: 0;
+			/* padding-top: 0; */
 			padding-bottom: 0;
 			min-height: auto;
 			overflow: hidden;
@@ -65,6 +64,7 @@
 
 		&[role='user'] {
 			.ant-bubble-content {
+				padding-top: 0;
 				background-color: var(--theme-bubble-bg-color);
 				color: #fff;
 			}
