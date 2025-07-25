@@ -18,11 +18,11 @@ i18n
 	.init({
 		// 预加载资源
 		resources: {
-			'en-US': {
+			'en_US': {
 				common: enCommon,
 				app: enApp,
 			},
-			'zh-CN': {
+			'zh_CN': {
 				common: zhCommon,
 				app: zhApp,
 			},

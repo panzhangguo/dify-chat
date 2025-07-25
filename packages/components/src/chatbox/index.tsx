@@ -217,6 +217,7 @@ export const Chatbox = (props: ChatboxProps) => {
 			}
 		}) as GetProp<typeof Bubble.List, 'items'>
 	}, [
+		t,
 		messageItems,
 		conversationId,
 		difyApi,

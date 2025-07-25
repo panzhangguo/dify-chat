@@ -11,7 +11,7 @@ import { AppIcon, AppInfo, ConversationList, LucideIcon } from '@dify-chat/compo
 import { HeaderLayout } from '@dify-chat/components'
 import { ConversationsContextProvider, IDifyAppItem, useAppContext } from '@dify-chat/core'
 import { generateUuidV4, isTempId, useIsMobile } from '@dify-chat/helpers'
-import { useLangContext } from '@dify-chat/lang'
+import { LangEnum, useLangContext } from '@dify-chat/lang'
 import { ThemeModeEnum, useThemeContext } from '@dify-chat/theme'
 import {
 	Button,
@@ -63,7 +63,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 	const { extComponents, initLoading, difyApi } = props
 	const [sidebarOpen, setSidebarOpen] = useState(true)
 	const { themeMode, setThemeMode } = useThemeContext()
-	const { t } = useLangContext()
+	const { t, lang, setLang } = useLangContext()
 	const { appLoading, currentApp } = useAppContext()
 	const [renameForm] = Form.useForm()
 	const [conversations, setConversations] = useState<IConversationItem[]>([])
@@ -72,7 +72,6 @@ export default function ChatLayout(props: IChatLayoutProps) {
 		return conversations.find(item => item.id === currentConversationId)
 	}, [conversations, currentConversationId])
 	const isMobile = useIsMobile()
-
 	// 创建 Dify API 实例
 	const searchParams = useSearchParams()
 	const [conversationListLoading, setCoversationListLoading] = useState<boolean>(false)
@@ -296,6 +295,32 @@ export default function ChatLayout(props: IChatLayoutProps) {
 			},
 			{
 				type: 'group',
+				key: 'language',
+				children: [
+					{
+						key: LangEnum.ZH_CN,
+						label: (
+							<Radio.Group
+								key="language"
+								optionType="button"
+								value={lang}
+								onChange={e => {
+									setLang(e.target.value as LangEnum)
+								}}
+							>
+								<Radio value={LangEnum.ZH_CN}>{t('中文')}</Radio>
+								<Radio value={LangEnum.EN_US}>{t('language.en_US')}</Radio>
+							</Radio.Group>
+						),
+					},
+				],
+				label: t('language.title'),
+			},
+			{
+				type: 'divider',
+			},
+			{
+				type: 'group',
 				label: t('conversation.list'),
 				children: conversations?.length
 					? conversations.map(item => {
@@ -322,7 +347,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 		}
 
 		return [...actionMenus, ...conversationListMenus]
-	}, [currentConversationId, conversations, themeMode, setThemeMode])
+	}, [currentConversationId, conversations, themeMode, setThemeMode, t])
 
 	// 对话列表（包括加载和缺省状态）
 	const conversationListWithEmpty = useMemo(() => {

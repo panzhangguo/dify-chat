@@ -3,8 +3,8 @@
  * 国际化模式枚举
  */
 export enum LangEnum {
-	ZH_CN = 'zh-CN',
-	EN_US = 'en-US',
+	ZH_CN = 'zh_CN',
+	EN_US = 'en_US',
 }
 
 /**

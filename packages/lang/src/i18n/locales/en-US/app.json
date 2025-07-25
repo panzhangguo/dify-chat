@@ -15,6 +15,11 @@
 		"light": "Light",
 		"dark": "Dark"
 	},
+	"language": {
+		"title": "Language",
+		"zh_CN": "Chinse",
+		"en_US": "English"
+	},
 	"common": {
 		"theme": "Theme",
 		"rename": "Rename",
@@ -34,7 +39,8 @@
 		"empty_app_description": "No application configuration, please contact administrator",
 		"copy_success": "Copy successful",
 		"operate_success": "Operation successful",
-		"enter_to_submit": "Press Enter to submit"
+		"enter_to_submit": "Press Enter to submit",
+		"app_list": "Application List"
 	},
 	"conversation": {
 		"default_name": "New Conversation",

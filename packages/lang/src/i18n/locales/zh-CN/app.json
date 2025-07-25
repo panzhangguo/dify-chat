@@ -15,6 +15,11 @@
 		"light": "亮色",
 		"dark": "暗黑"
 	},
+	"language": {
+		"title": "语言",
+		"zh_CN": "中文",
+		"en_US": "英文"
+	},
 	"common": {
 		"theme": "主题",
 		"rename": "重命名",
@@ -34,7 +39,8 @@
 		"empty_app_description": "暂无应用配置，请联系管理员",
 		"copy_success": "复制成功",
 		"operate_success": "操作成功",
-		"enter_to_submit": "`Enter`发送"
+		"enter_to_submit": "`Enter`发送",
+		"app_list": "应用列表"
 	},
 	"conversation": {
 		"default_name": "新会话",

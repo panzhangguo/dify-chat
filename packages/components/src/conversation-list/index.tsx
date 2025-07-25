@@ -46,7 +46,7 @@ export const ConversationList = (props: IConversationListProps) => {
 	 */
 	const deleteConversation = async (conversationId: string) => {
 		await deleteConversationPromise(conversationId)
-		message.success('删除成功')
+		message.success(`${t('common.delete_all_success')}`)
 	}
 
 	/**
