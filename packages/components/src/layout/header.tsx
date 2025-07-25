@@ -1,5 +1,6 @@
 import { LucideIcon } from '@dify-chat/components'
 import { useIsMobile } from '@dify-chat/helpers'
+import { LangSelector } from '@dify-chat/lang'
 import { ThemeSelector, useThemeContext } from '@dify-chat/theme'
 import { Space } from 'antd'
 import classNames from 'classnames'
@@ -11,6 +12,7 @@ import { Logo } from './logo'
 interface IHeaderLayoutProps {
 	title?: React.ReactNode
 	rightIcon?: React.ReactNode
+	className?: string
 }
 
 const HeaderSiderIcon = (props: { align: 'left' | 'right'; children: React.ReactNode }) => {
@@ -31,11 +33,11 @@ const HeaderSiderIcon = (props: { align: 'left' | 'right'; children: React.React
  * 头部布局组件
  */
 export default function HeaderLayout(props: IHeaderLayoutProps) {
-	const { title, rightIcon } = props
+	const { title, rightIcon, className } = props
 	const { themeMode } = useThemeContext()
 	const isMobile = useIsMobile()
 	return (
-		<div className="h-16 flex items-center justify-between px-4">
+		<div className={classNames('h-16 flex items-center justify-between px-4', className)}>
 			{/* 🌟 Logo */}
 			<HeaderSiderIcon align="left">
 				<Logo
@@ -68,6 +70,14 @@ export default function HeaderLayout(props: IHeaderLayoutProps) {
 							</div>
 						</ThemeSelector>
 						{/* <GithubIcon /> */}
+						<LangSelector>
+							<div className="flex items-center cursor-pointer">
+								<LucideIcon
+									name="languages"
+									size={20}
+								/>
+							</div>
+						</LangSelector>
 					</Space>
 				)}
 			</HeaderSiderIcon>

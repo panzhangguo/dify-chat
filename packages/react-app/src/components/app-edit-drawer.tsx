@@ -122,6 +122,7 @@ export const AppEditDrawer = (props: IAppEditDrawerProps) => {
 									},
 									welcomeConfig: {
 										title: values['welcomeConfig.title'] || WelcomeConfig.title,
+										aiIconUrl: values['welcomeConfig.aiIconUrl'] || WelcomeConfig.aiIconUrl,
 										description: values['welcomeConfig.description'] || WelcomeConfig.description,
 									},
 									requestConfig: {
@@ -143,8 +144,6 @@ export const AppEditDrawer = (props: IAppEditDrawerProps) => {
 										},
 									},
 								}
-								console.log('values', values)
-								console.log('commonInfo', commonInfo)
 								if (detailDrawerMode === AppDetailDrawerModeEnum.edit) {
 									await updateApp({
 										id: updatingItem!.id,

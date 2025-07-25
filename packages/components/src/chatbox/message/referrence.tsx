@@ -44,7 +44,7 @@ const ReferenceItem = (props: IRetrieverResourceGroupedItem) => {
 	const isMobile = useIsMobile()
 	return (
 		<div
-			className="text-gray-600 flex items-center"
+			className="text-gray-500 flex items-center"
 			title={props.name}
 		>
 			<Popover

@@ -1,7 +1,7 @@
 /**
  * 全局 LocalStorage Key 前缀
  */
-const KEY_PREFIX = '__DC__'
+export const KEY_PREFIX = '__DC__'
 
 const LocalStorageKeyList = [
 	'USER_ID',
@@ -10,6 +10,7 @@ const LocalStorageKeyList = [
 	'THEME_MODE',
 	'RUNNING_MODE',
 	'ENABLE_SETTING',
+	'LANG'
 ] as const
 
 export const LocalStorageKeys = LocalStorageKeyList.reduce(

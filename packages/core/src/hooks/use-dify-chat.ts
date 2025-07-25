@@ -80,6 +80,7 @@ const DEFAULT_CONTEXT_VALUE_SINGLE_APP: IDifyChatContextSingleApp = {
 		},
 		welcomeConfig: {
 			title: '',
+			aiIconUrl: '',
 			description: '',
 		},
 		answerForm: {

@@ -1,4 +1,5 @@
 import { GithubOutlined } from '@ant-design/icons'
+import { AppName } from '@dify-chat/core'
 import { Button } from 'antd'
 
 import LogoImage from '../assets/images/logo.png'
@@ -51,8 +52,8 @@ export const Logo = (props: ILogoProps) => {
 					alt="logo"
 				/>
 				{!hideText ? (
-					<span className="inline-block my-0 ml-3 font-bold text-lg text-theme-text">
-						奥晨分享
+					<span className="inline-block my-0 ml-3 font-bold text-lg text-theme-text tracking-[0.06rem]">
+						{AppName}
 					</span>
 				) : null}
 			</div>

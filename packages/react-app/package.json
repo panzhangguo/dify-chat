@@ -20,6 +20,7 @@
 		"@dify-chat/core": "workspace:^",
 		"@dify-chat/helpers": "workspace:^",
 		"@dify-chat/theme": "workspace:^",
+		"@dify-chat/lang": "workspace:^",
 		"@rybbit/js": "catalog:",
 		"@toolkit-fe/clipboard": "catalog:",
 		"@toolkit-fe/where-am-i": "catalog:",

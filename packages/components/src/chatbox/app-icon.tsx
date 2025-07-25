@@ -27,7 +27,7 @@ export default function AppIcon(props: { size?: 'small' | 'default'; hasContaine
 
 	const renderIcon = useMemo(() => {
 		return renderProps.type === 'emoji' ? (
-			emoji.getUnicode(renderProps.icon)
+			renderProps.icon
 		) : (
 			<img
 				className="w-full h-full inline-block"

@@ -296,12 +296,8 @@ export function MarkdownRenderer(props: {
 	 */
 	const text4Render = useMemo(() => {
 		const apiBase = appConfig?.requestConfig.apiBase
-		console.log('markdownText', markdownText)
 
-		let result =
-			markdownText +
-				'\n![video](https://qidian-test-dev-1313545216.cos.ap-shanghai.myqcloud.com/001_%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B.mp4)' ||
-			''
+		let result = markdownText
 		// 正则匹配所有 markdown 图片转为 img 标签，保留 src/alt 属性
 		// 这种处理是为了解决 markdownText 以一个 md 图片开始（如: `![alt](url)`）时，图片无法展示的问题
 		result = result?.replace(/!\[([^\]]*)\]\(([^)]*)\)/g, (match, alt, src) => {
@@ -310,14 +306,13 @@ export function MarkdownRenderer(props: {
 					? src
 					: apiBase?.replace('/v1', '') + src
 			if (alt === 'video') {
-				return `<video src="${_src}" alt="${alt}" />`
+				return `<video src="${_src}" alt="${alt}"></video>`
 			}
 
-			return `<img src="${_src}" alt="${alt}" />`
+			return `<img src="${_src}" alt="${alt}" ></img>`
 		})
 		result = flow([preprocessThinkTag, preprocessLaTeX])(result)
 		// 如果是以图片标签开头，则加一个 p
-		console.log('text4Render', result)
 		return result
 	}, [markdownText, appConfig])
 

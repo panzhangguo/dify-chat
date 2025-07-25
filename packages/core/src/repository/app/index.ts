@@ -53,6 +53,10 @@ export interface IDifyAppItem {
 		 */
 		title: string
 		/**
+		 * 机器人图标
+		 */
+		aiIconUrl: string
+		/**
 		 * 应用描述
 		 */
 		description: string

@@ -106,6 +106,8 @@ export const Chatbox = (props: ChatboxProps) => {
 	const { isDark } = useThemeContext()
 	const aiIcon = currentApp?.site?.use_icon_as_answer_icon ? (
 		<AppIcon hasContainer />
+	) : currentApp?.config.welcomeConfig.aiIconUrl ? (
+		<img src={`${currentApp?.config.welcomeConfig.aiIconUrl}`} />
 	) : (
 		<LucideIcon
 			name="bot"

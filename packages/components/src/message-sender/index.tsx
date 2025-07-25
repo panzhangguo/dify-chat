@@ -3,7 +3,7 @@ import { Attachments, AttachmentsProps, Sender } from '@ant-design/x'
 import { DifyApi, IFile, IUploadFileResponse } from '@dify-chat/api'
 import { useAppContext } from '@dify-chat/core'
 import { useThemeContext } from '@dify-chat/theme'
-import { Badge, Button, GetProp, GetRef, message } from 'antd'
+import { Badge, Button, Flex, GetProp, GetRef, message } from 'antd'
 import { Space, Spin, Typography } from 'antd'
 import { RcFile } from 'antd/es/upload'
 import { useMemo, useRef, useState } from 'react'
@@ -66,7 +66,6 @@ export const MessageSender = (props: IMessageSenderProps) => {
 		setContent(value)
 	}
 
-	console.log('currentApp', currentApp?.parameters)
 	const allowedFileTypes = useMemo(() => {
 		if (!currentApp?.parameters?.file_upload) {
 			return []
@@ -266,20 +265,20 @@ export const MessageSender = (props: IMessageSenderProps) => {
 			header={senderHeader}
 			value={content}
 			onChange={onChange}
-			prefix={
-				enableFileUpload ? (
-					// 附件上传按钮
-					<Badge dot={files.length > 0 && !open}>
-						<Button
-							onClick={() => setOpen(!open)}
-							icon={<LinkOutlined className="text-theme-text" />}
-						/>
-					</Badge>
-				) : null
-			}
+			// prefix={
+			// 	enableFileUpload ? (
+			// 		// 附件上传按钮
+			// 		<Badge dot={files.length > 0 && !open}>
+			// 			<Button
+			// 				onClick={() => setOpen(!open)}
+			// 				icon={<LinkOutlined className="text-theme-text" />}
+			// 			/>
+			// 		</Badge>
+			// 	) : null
+			// }
 			style={{
 				boxShadow: isLight ? '0px -2px 12px 4px var(--theme-border-color)' : 'none',
-				borderRadius: '32px',
+				borderRadius: '18px',
 			}}
 			loading={isRequesting}
 			disabled={audio2TextLoading}
@@ -330,30 +329,49 @@ export const MessageSender = (props: IMessageSenderProps) => {
 				setOpen(false)
 			}}
 			onCancel={onCancel}
-			actions={(_, info) => {
-				const { SendButton, LoadingButton, ClearButton, SpeechButton } = info.components
+			footer={({ components }) => {
+				const { SendButton, LoadingButton, ClearButton, SpeechButton } = components
 				return (
-					<Space size="small">
-						<Typography.Text type="secondary">
-							<small className="text-theme-border">Enter发送</small>
-						</Typography.Text>
-						<ClearButton />
-						{enableSpeechToText && <SpeechButton />}
-						{isRequesting ? (
-							<LoadingButton
-								type="default"
-								icon={<Spin size="small" />}
-								disabled
-							/>
-						) : (
-							<SendButton
-								type="primary"
-								icon={<SendOutlined />}
-								disabled={false}
-							/>
-						)}
-					</Space>
+					<Flex justify="space-between">
+						<div>
+							<Space>
+								{enableFileUpload ? (
+									// 附件上传按钮
+									<Badge dot={files.length > 0 && !open}>
+										<Button
+											onClick={() => setOpen(!open)}
+											style={{ border: 'none' }}
+											icon={<LinkOutlined className="text-theme-text" />}
+										/>
+									</Badge>
+								) : null}
+							</Space>
+						</div>
+						<Space>
+							<Typography.Text type="secondary">
+								<small className="text-theme-desc">Enter发送</small>
+							</Typography.Text>
+							<ClearButton />
+							{enableSpeechToText && <SpeechButton />}
+							{isRequesting ? (
+								<LoadingButton
+									type="default"
+									icon={<Spin size="small" />}
+									disabled
+								/>
+							) : (
+								<SendButton
+									type="primary"
+									icon={<SendOutlined />}
+									disabled={false}
+								/>
+							)}
+						</Space>
+					</Flex>
 				)
+			}}
+			actions={(_, info) => {
+				return <></>
 			}}
 		/>
 	)

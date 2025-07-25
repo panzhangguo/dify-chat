@@ -61,6 +61,7 @@ const DEFAULT_APP_CONTEXT: IAppContext = {
 			},
 			welcomeConfig: {
 				title: '',
+				aiIconUrl: '',
 				description: '',
 			},
 		},

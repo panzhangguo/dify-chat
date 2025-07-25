@@ -1,9 +1,14 @@
 import {
+	DiscordFilled,
 	EditOutlined,
 	MenuOutlined,
+	MessageTwoTone,
 	MinusCircleOutlined,
 	PlusCircleOutlined,
 	PlusOutlined,
+	SendOutlined,
+	SmileOutlined,
+	SmileTwoTone,
 } from '@ant-design/icons'
 import { DifyApi, IConversationItem } from '@dify-chat/api'
 import { AppIcon, AppInfo, ConversationList, LucideIcon } from '@dify-chat/components'
@@ -13,6 +18,7 @@ import { generateUuidV4, isTempId, useIsMobile } from '@dify-chat/helpers'
 import { ThemeModeEnum, ThemeModeLabelEnum, useThemeContext } from '@dify-chat/theme'
 import {
 	Button,
+	Divider,
 	Dropdown,
 	Empty,
 	Form,
@@ -332,6 +338,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 							return {
 								key: item.id,
 								label: item.name,
+								icon: <SmileOutlined />,
 							}
 						})}
 						activeKey={currentConversationId}
@@ -365,6 +372,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 				{/* 头部 */}
 				<HeaderLayout
 					// title={renderCenterTitle?.(currentApp?.config?.info)}
+					className="!h-12"
 					rightIcon={
 						isMobile ? (
 							<Dropdown
@@ -396,21 +404,24 @@ export default function ChatLayout(props: IChatLayoutProps) {
 										{currentApp.config.info ? <AppInfo /> : null}
 										{/* 添加会话 */}
 										{currentApp ? (
-											<Button
-												onClick={() => {
-													onAddConversation()
-												}}
-												type="default"
-												className="h-10 leading-10 rounded-lg border border-solid border-gray-200 mt-3 mx-4 text-theme-text "
-												icon={<PlusOutlined className="" />}
-											>
-												新增对话
-											</Button>
+											<>
+												<Button
+													onClick={() => {
+														onAddConversation()
+													}}
+													color="primary"
+													variant="filled"
+													className="h-10 leading-10 rounded-lg border border-solid border-gray-200 mt-3 mx-4 text-theme-text "
+													icon={<PlusOutlined className="" />}
+												>
+													新增对话
+												</Button>
+												<Divider orientation="left"></Divider>
+												<div className="text-theme-desc text-[0.75rem] pb-3 pl-4">历史会话</div>
+											</>
 										) : null}
 										{/* 🌟 对话管理 */}
-										<div className="px-4 mt-3 flex-1 overflow-auto">
-											{conversationListWithEmpty}
-										</div>
+										<div className="px-4 flex-1 overflow-auto">{conversationListWithEmpty}</div>
 									</>
 								) : (
 									<div className="flex flex-col justify-start items-center flex-1 pt-6">
@@ -443,7 +454,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 													{conversationListWithEmpty}
 												</div>
 											}
-											title="对话列表"
+											title="历史会话列表"
 											placement="rightTop"
 										>
 											{/* 必须包裹一个 HTML 标签才能正常展示 Popover */}

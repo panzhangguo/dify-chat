@@ -48,7 +48,7 @@
 .ant-bubble-list {
 	.ant-bubble {
 		.ant-bubble-content {
-			/* padding-top: 0; */
+			padding-top: 0;
 			padding-bottom: 0;
 			min-height: auto;
 			overflow: hidden;
@@ -64,7 +64,6 @@
 
 		&[role='user'] {
 			.ant-bubble-content {
-				padding-top: 0;
 				background-color: var(--theme-bubble-bg-color);
 				color: #fff;
 			}
@@ -128,13 +127,12 @@ a {
 }
 
 /* 滚动条的宽度 */
-
-::-webkit-scrollbar:vertical {
-	width: 8px; /* 纵向滚动条宽度 */
+::-webkit-scrollbar {
+  width: 8px; /* 滚动条宽度 */
+  height: 8px; /* 水平滚动条高度 */
 }
 
 /* 滚动条的轨道颜色 */
-
 ::-webkit-scrollbar-track {
 	border-radius: 4px;
 	background-color: #f0f0f0;
@@ -154,8 +152,10 @@ a {
 	border-radius: 4px;
 }
 
-.dark::-webkit-scrollbar-thumb {
-	background-color: #555;
+.dark {
+	::-webkit-scrollbar-thumb {
+		background-color: #4b4b4b;
+	}
 }
 
 /* 滚动条在鼠标悬停时的滑块颜色 */

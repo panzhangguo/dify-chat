@@ -59,7 +59,7 @@ export default function MessageContent(props: IMessageContentProps) {
 					const parsedValue = JSON.parse(content)
 					return parsedValue.isFormSubmit ? currentApp.config.answerForm?.feedbackText : content
 				} catch (error) {
-					console.log('computedContent json 解析失败', error)
+					console.error('computedContent json 解析失败', error)
 					return content
 				}
 			}
