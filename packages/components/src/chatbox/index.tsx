@@ -341,9 +341,13 @@ export const Chatbox = (props: ChatboxProps) => {
 							onCancel={onCancel}
 						/>
 					</div>
-					<div className="text-theme-desc text-sm text-center h-8 leading-8 truncate">
-						{currentApp?.site?.custom_disclaimer}
-					</div>
+					{currentApp?.site?.custom_disclaimer ? (
+						<div className="text-theme-desc text-sm text-center h-8 leading-8 truncate">
+							{currentApp?.site?.custom_disclaimer}
+						</div>
+					) : (
+						<div className="h-3"></div>
+					)}
 				</div>
 			</div>
 		</div>
