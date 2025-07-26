@@ -49,6 +49,7 @@ class DifyAppService extends DifyAppStore {
 						enableUpdateAfterCvstStarts: false,
 					},
 					extConfig: {
+						language: appIfo.language,
 						conversation: {
 							openingStatement: {
 								displayMode: 'default',

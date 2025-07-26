@@ -71,6 +71,10 @@ export interface IDifyAppItem {
 	 */
 	extConfig?: {
 		/**
+		 * 语言设置
+		 */
+		language: 'zh_CN' | 'en_US'
+		/**
 		 * 对话相关配置
 		 */
 		conversation?: {

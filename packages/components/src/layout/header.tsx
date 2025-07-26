@@ -1,10 +1,13 @@
 import { LucideIcon } from '@dify-chat/components'
+import { useAppContext } from '@dify-chat/core'
 import { useIsMobile } from '@dify-chat/helpers'
-import { LangSelector } from '@dify-chat/lang'
+import { LangEnum, LangSelector, useLangContext } from '@dify-chat/lang'
 import { ThemeSelector, useThemeContext } from '@dify-chat/theme'
+import { useMount } from 'ahooks'
 import { Space } from 'antd'
 import classNames from 'classnames'
-import React from 'react'
+import { useHistory } from 'pure-react-router'
+import React, { useEffect } from 'react'
 
 import CenterTitleWrapper from './center-title-wrapper'
 import { Logo } from './logo'
@@ -35,7 +38,19 @@ const HeaderSiderIcon = (props: { align: 'left' | 'right'; children: React.React
 export default function HeaderLayout(props: IHeaderLayoutProps) {
 	const { title, rightIcon, className } = props
 	const { themeMode } = useThemeContext()
+	const { apps, setCurrentAppId } = useAppContext()
+	const { lang } = useLangContext()
 	const isMobile = useIsMobile()
+	const history = useHistory()
+
+	useEffect(() => {
+		const toApp = apps?.find(item => (item.extConfig?.language as LangEnum) === lang)
+		if (toApp) {
+			history.replace(`/app/${toApp.id}`)
+			setCurrentAppId(toApp.id)
+		}
+	}, [lang, apps])
+
 	return (
 		<div className={classNames('h-16 flex items-center justify-between px-4', className)}>
 			{/* 🌟 Logo */}

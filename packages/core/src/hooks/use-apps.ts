@@ -18,6 +18,7 @@ export interface ICurrentApp {
 export interface IAppContext {
 	appLoading?: boolean
 	currentAppId?: string
+	apps?: IDifyAppItem[]
 	setCurrentAppId: (appId: string) => void
 	currentApp?: ICurrentApp
 	setCurrentApp: (app: ICurrentApp) => void
@@ -47,6 +48,7 @@ const DEFAULT_APP_CONTEXT: IAppContext = {
 	currentAppId: '',
 	setCurrentAppId: () => {},
 	appLoading: false,
+	apps:[],
 	currentApp: {
 		config: {
 			id: '',

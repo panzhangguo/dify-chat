@@ -47,7 +47,6 @@ const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 			manual: true,
 			onSuccess: result => {
 				flushSync(() => {
-					console.log('result', result)
 					setAppList(result)
 				})
 				if (isMobile) {
@@ -133,6 +132,7 @@ const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 		<AppContextProvider
 			value={{
 				appLoading: initLoading,
+				apps: appList,
 				currentAppId: selectedAppId,
 				setCurrentAppId: setSelectedAppId,
 				currentApp,
