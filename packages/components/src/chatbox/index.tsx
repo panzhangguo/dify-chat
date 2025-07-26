@@ -1,7 +1,7 @@
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { Bubble, Prompts } from '@ant-design/x'
 import { DifyApi, IFile, IMessageItem4Render } from '@dify-chat/api'
-import { OpeningStatementDisplayMode, Roles, useAppContext } from '@dify-chat/core'
+import { OpeningStatementDisplayMode, Roles, useAppContext, WelcomeConfig } from '@dify-chat/core'
 import { isTempId, useIsMobile } from '@dify-chat/helpers'
 import { useLangContext } from '@dify-chat/lang'
 import { useThemeContext } from '@dify-chat/theme'
@@ -108,8 +108,8 @@ export const Chatbox = (props: ChatboxProps) => {
 	const { t } = useLangContext()
 	const aiIcon = currentApp?.site?.use_icon_as_answer_icon ? (
 		<AppIcon hasContainer />
-	) : currentApp?.config.welcomeConfig.aiIconUrl ? (
-		<img src={`${currentApp?.config.welcomeConfig.aiIconUrl}`} />
+	) : WelcomeConfig.aiIconUrl ? (
+		<img src={`${WelcomeConfig.aiIconUrl}`} />
 	) : (
 		<LucideIcon
 			name="bot"
@@ -280,7 +280,7 @@ export const Chatbox = (props: ChatboxProps) => {
 					{/* 下一步问题建议 当存在消息列表，且非正在对话时才展示 */}
 					{nextSuggestions?.length && items.length && !isRequesting ? (
 						<div className="p-3 md:pl-[44px] mt-3">
-							<div className="text-desc">🤔 {t('chat.message.next_suggestions')}:</div>
+							<div className="text-desc">🤔 {t('chat.next_suggestions.title')}:</div>
 							<div>
 								{nextSuggestions?.map(item => {
 									return (

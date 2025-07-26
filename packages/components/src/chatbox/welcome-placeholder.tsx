@@ -8,6 +8,7 @@ import { Button, FormInstance, GetProp, message, Space } from 'antd'
 import classNames from 'classnames'
 import { useMemo } from 'react'
 
+import ChatAiImg from '../assets/images/chat-ai.jpeg'
 // import LucideIcon from '../lucide-icon'
 import { validateAndGenErrMsgs } from '../utils'
 import AppInputWrapper from './app-input-wrapper'
@@ -96,7 +97,12 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				{showPrompts ? (
 					<Welcome
 						variant="borderless"
-						icon={`${currentApp?.config?.welcomeConfig?.aiIconUrl}`}
+						// `${currentApp?.config?.welcomeConfig?.aiIconUrl}`
+						icon={
+							<div className="rounded-[50%] overflow-hidden">
+								<img src={ChatAiImg} />
+							</div>
+						}
 						title={t('welcome.title')}
 						description={t('welcome.description')}
 						extra={

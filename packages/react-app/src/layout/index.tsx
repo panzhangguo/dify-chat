@@ -1,4 +1,4 @@
-import { Route, useHistory } from 'pure-react-router'
+import { Route, useHistory, useParams } from 'pure-react-router'
 import { useEffect } from 'react'
 
 import { difyChatRuntimeConfig } from '@/config/global'
@@ -13,13 +13,18 @@ export default function LayoutIndex() {
 	const mode = difyChatRuntimeConfig.get().runningMode
 	const { isAuthorized, goAuthorize } = useAuth()
 	const redirect2Index = useRedirect2Index(mode)
+	const { appId } = useParams<{ appId: string }>()
 
 	useEffect(() => {
 		const pathname = history.location.pathname
 
 		// 如果未登录，则跳转登录
 		if (!isAuthorized && pathname !== '/auth') {
-			goAuthorize()
+			if (appId) {
+				goAuthorize('/app/' + appId)
+			} else {
+				goAuthorize()
+			}
 			return
 		}
 

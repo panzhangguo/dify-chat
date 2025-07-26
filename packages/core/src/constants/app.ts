@@ -97,10 +97,8 @@ export const OpeningStatementDisplayModeOptions = [
 
 export const WelcomeConfig = {
 	title: '你好, 我是奥晨智能客服',
-	aiIconUrl:
-		'https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*s5sNRo5LjfQAAAAAAAAAAAAADgCCAQ/fmt.webp',
+	aiIconUrl: '',
+	// 'https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*s5sNRo5LjfQAAAAAAAAAAAAADgCCAQ/fmt.webp',
 	description:
 		'我们专注于提供开发制造塑料家具、日用品、汽摩配件、物流系列等专业成型一站式解决方案，致力于为您的项目提供高效可靠的技术支持与服务。',
 }
-
-export const AppName = '魔博士'

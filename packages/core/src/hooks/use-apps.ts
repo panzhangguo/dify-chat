@@ -59,11 +59,6 @@ const DEFAULT_APP_CONTEXT: IAppContext = {
 				apiBase: '',
 				apiKey: '',
 			},
-			welcomeConfig: {
-				title: '',
-				aiIconUrl: '',
-				description: '',
-			},
 		},
 		parameters: {
 			opening_statement: '',

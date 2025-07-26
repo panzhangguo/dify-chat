@@ -3,6 +3,7 @@ import { createDifyApiInstance, DifyApi } from '@dify-chat/api'
 import { LucideIcon } from '@dify-chat/components'
 import { AppContextProvider, DifyAppStore, ICurrentApp, IDifyAppItem } from '@dify-chat/core'
 import { useIsMobile } from '@dify-chat/helpers'
+import { useLangContext } from '@dify-chat/lang'
 import { useMount, useRequest } from 'ahooks'
 import { Dropdown, message } from 'antd'
 import { useHistory, useParams } from 'pure-react-router'
@@ -22,7 +23,7 @@ const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 	const { listApi } = props
 	const history = useHistory()
 	const { userId } = useAuth()
-
+	const { t } = useLangContext()
 	const [difyApi] = useState(
 		createDifyApiInstance({
 			user: userId,
@@ -30,7 +31,6 @@ const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 			apiKey: '',
 		}),
 	)
-
 	const [selectedAppId, setSelectedAppId] = useState<string>('')
 	const [initLoading, setInitLoading] = useState(false)
 	const [appList, setAppList] = useState<IDifyAppItem[]>([])
@@ -47,12 +47,13 @@ const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 			manual: true,
 			onSuccess: result => {
 				flushSync(() => {
+					console.log('result', result)
 					setAppList(result)
 				})
 				if (isMobile) {
 					// 移动端如果没有应用，直接跳转应用列表页
 					if (!result?.length) {
-						history.replace('/apps')
+						// history.replace('/apps')
 						return Promise.resolve([])
 					}
 				}
@@ -64,7 +65,7 @@ const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 				}
 			},
 			onError: error => {
-				message.error(`获取应用列表失败: ${error}`)
+				message.error(`${t('common.fetch_app_list_failed')}: ${error}`)
 				console.error(error)
 			},
 		},
@@ -108,7 +109,7 @@ const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 				})
 			})
 			.catch(err => {
-				message.error(`获取应用参数失败: ${err}`)
+				message.error(`${t('common.fetch_app_params_failed')}: ${err}`)
 				console.error(err)
 				setCurrentApp(undefined)
 			})
@@ -155,7 +156,7 @@ const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 									history.push('/apps')
 								}}
 							>
-								应用列表
+								{t('common.app_list')}
 							</span>
 							{selectedAppId ? (
 								<div className="flex items-center overflow-hidden">

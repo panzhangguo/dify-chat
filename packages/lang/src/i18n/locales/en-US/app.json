@@ -36,6 +36,8 @@
 		"delete_all_success": "Deletion successful",
 		"sidebar_collapse": "Collapse Sidebar",
 		"sidebar_expand": "Expand Sidebar",
+		"fetch_app_list_failed": "Failed to fetch app list",
+		"fetch_app_params_failed": "Failed to fetch app parameters",
 		"empty_app_description": "No application configuration, please contact administrator",
 		"copy_success": "Copy successful",
 		"operate_success": "Operation successful",

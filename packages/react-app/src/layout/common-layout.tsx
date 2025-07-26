@@ -1,5 +1,6 @@
 import { HeaderLayout } from '@dify-chat/components'
 import { IDifyAppItem, useAppContext } from '@dify-chat/core'
+import { useLangContext } from '@dify-chat/lang'
 import { Empty, Spin } from 'antd'
 
 interface ICommonLayoutProps {
@@ -12,6 +13,7 @@ interface ICommonLayoutProps {
 export default function CommonLayout(props: ICommonLayoutProps) {
 	const { initLoading, renderCenterTitle, children, extComponents } = props
 	const { appLoading, currentApp } = useAppContext()
+	const { t } = useLangContext()
 
 	return (
 		<div className={`w-full h-screen flex flex-col overflow-hidden bg-theme-bg`}>
@@ -29,7 +31,7 @@ export default function CommonLayout(props: ICommonLayoutProps) {
 				) : (
 					<div className="w-full h-full flex items-center justify-center">
 						<Empty
-							description="暂无 Dify 应用配置，请联系管理员"
+							description={t('common.empty_app_description')}
 							className="text-base"
 						/>
 					</div>

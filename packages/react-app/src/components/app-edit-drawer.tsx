@@ -1,5 +1,5 @@
 import { DifyApi } from '@dify-chat/api'
-import { AppModeEnums, DifyAppStore, IDifyAppItem, WelcomeConfig } from '@dify-chat/core'
+import { AppModeEnums, DifyAppStore, IDifyAppItem } from '@dify-chat/core'
 import { generateUuidV4 } from '@dify-chat/helpers'
 import { useRequest } from 'ahooks'
 import { Button, Drawer, DrawerProps, Form, message, Space } from 'antd'
@@ -119,11 +119,6 @@ export const AppEditDrawer = (props: IAppEditDrawerProps) => {
 										...difyAppInfo,
 										// 兼容处理，当 Dify API 返回的应用信息中没有 mode 时，使用表单中的 mode
 										mode: difyAppInfo.mode || values['info.mode'],
-									},
-									welcomeConfig: {
-										title: values['welcomeConfig.title'] || WelcomeConfig.title,
-										aiIconUrl: values['welcomeConfig.aiIconUrl'] || WelcomeConfig.aiIconUrl,
-										description: values['welcomeConfig.description'] || WelcomeConfig.description,
 									},
 									requestConfig: {
 										apiBase: values.apiBase,

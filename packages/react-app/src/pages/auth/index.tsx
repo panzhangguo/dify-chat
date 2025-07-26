@@ -3,6 +3,7 @@ import { LocalStorageKeys, LocalStorageStore } from '@dify-chat/helpers'
 import FingerPrintJS from '@fingerprintjs/fingerprintjs'
 import { useMount } from 'ahooks'
 import { Spin } from 'antd'
+import { useHistory, useSearchParams } from 'pure-react-router'
 
 import { difyChatRuntimeConfig } from '@/config/global'
 import { useAuth } from '@/hooks/use-auth'
@@ -12,7 +13,8 @@ export default function AuthPage() {
 	const { userId } = useAuth()
 	const mode = difyChatRuntimeConfig.get().runningMode
 	const redirect2Index = useRedirect2Index(mode)
-
+	const params = useSearchParams()
+	const history = useHistory()
 	/**
 	 * 模拟登录接口
 	 */
@@ -22,7 +24,7 @@ export default function AuthPage() {
 		return {
 			userId: result.visitorId,
 			// 为方便演示，默认开启设置，实际场景中需要根据用户信息判断是否开启设置
-			enableSetting: true,
+			enableSetting: false,
 		}
 	}
 
@@ -36,10 +38,22 @@ export default function AuthPage() {
 		redirect2Index()
 	}
 
+	const handleLoginRedirect = async (redirect = '') => {
+		const userInfo = await mockLogin()
+		LocalStorageStore.set(LocalStorageKeys.USER_ID, userInfo.userId)
+		LocalStorageStore.set(LocalStorageKeys.ENABLE_SETTING, userInfo.enableSetting ? 'true' : '')
+		history.replace(redirect)
+	}
+
 	useMount(() => {
+		// 模拟自动登录
+		const redirect = params.get('redirect')
 		if (!userId) {
-			// 模拟自动登录
-			handleLogin()
+			if (redirect) {
+				handleLoginRedirect(redirect)
+			} else {
+				handleLogin()
+			}
 		} else {
 			redirect2Index()
 		}

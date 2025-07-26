@@ -36,6 +36,8 @@
 		"delete_all_success": "删除成功",
 		"sidebar_collapse": "折叠侧边栏",
 		"sidebar_expand": "展开侧边栏",
+		"fetch_app_list_failed": "获取应用列表失败",
+		"fetch_app_params_failed": "获取应用参数失败",
 		"empty_app_description": "暂无应用配置，请联系管理员",
 		"copy_success": "复制成功",
 		"operate_success": "操作成功",

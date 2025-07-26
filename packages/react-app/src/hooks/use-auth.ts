@@ -8,12 +8,13 @@ export const useAuth = () => {
 	const history = useHistory()
 	const userId = LocalStorageStore.get(LocalStorageKeys.USER_ID)
 	const enableSetting = LocalStorageStore.get(LocalStorageKeys.ENABLE_SETTING)
+	const enableAddApp = false
 
 	/**
 	 * 跳转登录页
 	 */
-	const goAuthorize = () => {
-		history.push('/auth')
+	const goAuthorize = (redirect = '') => {
+		history.push('/auth?redirect=' + redirect)
 	}
 
 	return {
@@ -21,5 +22,6 @@ export const useAuth = () => {
 		goAuthorize,
 		userId,
 		enableSetting,
+		enableAddApp,
 	}
 }
