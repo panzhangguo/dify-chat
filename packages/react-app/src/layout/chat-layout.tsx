@@ -394,7 +394,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 			<div className={`w-full h-screen flex flex-col overflow-hidden bg-theme-bg`}>
 				{/* 头部 */}
 				<HeaderLayout
-					title={renderCenterTitle?.(currentApp?.config?.info)}
+					// title={renderCenterTitle?.(currentApp?.config?.info)}
 					className="!h-12"
 					rightIcon={
 						isMobile ? (

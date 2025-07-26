@@ -18,7 +18,6 @@ import MainLayout from './main-layout'
 interface IMultiAppLayoutProps {
 	listApi: DifyAppStore['getApps']
 }
-
 const MultiAppLayout = (props: IMultiAppLayoutProps) => {
 	const { listApi } = props
 	const history = useHistory()
