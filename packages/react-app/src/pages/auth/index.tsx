@@ -55,7 +55,11 @@ export default function AuthPage() {
 				handleLogin()
 			}
 		} else {
-			redirect2Index()
+			if (redirect) {
+				handleLoginRedirect(redirect)
+			} else {
+				redirect2Index()
+			}
 		}
 	})
 

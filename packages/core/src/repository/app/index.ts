@@ -1,5 +1,15 @@
 import { AppModeEnums } from '../../constants'
 
+/**
+ * 后端应用配置 Item
+ */
+export interface IDifyAppExtendRequestConfig extends IDifyAppRequestConfig {
+	// 后端获取的id
+	id: string
+	// 语言
+	language: string
+}
+
 export interface IDifyAppRequestConfig {
 	/**
 	 * 请求地址

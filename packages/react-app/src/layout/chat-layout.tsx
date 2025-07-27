@@ -299,7 +299,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 				key: 'language',
 				children: [
 					{
-						key: LangEnum.ZH_CN,
+						key: 'language',
 						label: (
 							<Radio.Group
 								key="language"

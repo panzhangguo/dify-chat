@@ -41,7 +41,7 @@ export default function App() {
 			locale={lang === LangEnum.ZH_CN ? zhCN : enUS}
 		>
 			<BrowserRouter
-				basename="/acfx-chat"
+				basename=""
 				routes={routes}
 			>
 				<LayoutIndex />

@@ -40,7 +40,7 @@ export const LangContextProvider = (props: { children: React.ReactNode }) => {
 			return LangEnum.ZH_CN;
 		}
 
-		return LocalStorageStore.get(LocalStorageKeys.LANG) || LangEnum.ZH_CN;
+		return LocalStorageStore.get(LocalStorageKeys.LANG) || window.navigator.language;
 	});
 
 	useEffect(() => {

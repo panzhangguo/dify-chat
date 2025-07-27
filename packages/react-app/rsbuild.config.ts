@@ -32,7 +32,7 @@ export default defineConfig({
 	],
 	server: {
 		compress: false, // 解决代理后流式输出失效的问题
-		base: '/acfx-chat',
+		base: '/',
 		port: 5200,
 		host: '0.0.0.0', // 允许外部访问
 		proxy: [

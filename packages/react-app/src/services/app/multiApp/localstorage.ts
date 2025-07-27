@@ -65,7 +65,6 @@ class DifyAppService extends DifyAppStore {
 				}
 
 			}
-			console.log('result', result)
 			return result || []
 		} else {
 			const appJson = localStorage.getItem(APP_LIST_KEY)

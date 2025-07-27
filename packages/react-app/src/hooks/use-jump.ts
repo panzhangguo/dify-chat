@@ -7,7 +7,6 @@ import { useHistory } from 'pure-react-router'
  */
 export const useRedirect2Index = (runningMode: IDifyChatMode) => {
 	const history = useHistory()
-
 	return () => {
 		if (runningMode === 'singleApp') {
 			history.push('/chat')

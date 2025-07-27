@@ -9,13 +9,13 @@ import zhCommon from './locales/zh-CN/common.json';
 import { KEY_PREFIX, LocalStorageKeys } from '@dify-chat/helpers';
 import { LangEnum } from '../constants';
 
-const lng = LangEnum.ZH_CN;
 i18n
 	// 自动检测用户语言
 	.use(LanguageDetector)
 	// 集成React
 	.use(initReactI18next)
 	.init({
+		lng: navigator.language.replace('-', '_'),
 		// 预加载资源
 		resources: {
 			'en_US': {
@@ -34,7 +34,7 @@ i18n
 			escapeValue: false,
 		},
 		// 回退语言
-		fallbackLng: lng,
+		fallbackLng: LangEnum.EN_US,
 		// 支持的语言列表
 		supportedLngs: [LangEnum.EN_US, LangEnum.ZH_CN],
 		// 语言检测配置
