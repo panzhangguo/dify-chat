@@ -26,11 +26,16 @@ export default function LayoutIndex() {
 			if (appId) {
 				goAuthorize('/app/' + appId)
 			} else {
-				const configs = JSON.parse(
-					import.meta.env.PUBLIC_REQUEST_CONFIG,
-				) as IDifyAppExtendRequestConfig[]
-				const currentConfig = configs.find(item => item.language === lang)
-				goAuthorize('/app/' + currentConfig?.id)
+				if (import.meta.env.PUBLIC_REQUEST_CONFIG) {
+					const configs = JSON.parse(
+						import.meta.env.PUBLIC_REQUEST_CONFIG,
+					) as IDifyAppExtendRequestConfig[]
+					const currentConfig = configs.find(item => item.language === lang)
+					goAuthorize('/app/' + currentConfig?.id)
+					return
+				} else {
+					redirect2Index()
+				}
 			}
 			return
 		}
