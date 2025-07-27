@@ -15,6 +15,7 @@ i18n
 	// 集成React
 	.use(initReactI18next)
 	.init({
+		// 从浏览器获取默认语言 匹配当前格式
 		lng: navigator.language.replace('-', '_'),
 		// 预加载资源
 		resources: {
