@@ -10,7 +10,7 @@ import { HeaderLayout, LucideIcon } from '@dify-chat/components'
 import { AppModeLabels, DifyAppStore, IDifyAppItem } from '@dify-chat/core'
 import { useIsMobile } from '@dify-chat/helpers'
 import { useRequest } from 'ahooks'
-import { Button, Col, Dropdown, Empty, message, Modal, Row } from 'antd'
+import { Button, Col, Dropdown, Empty, message, Modal, Row, Spin } from 'antd'
 import { useHistory } from 'pure-react-router'
 import { useEffect, useState } from 'react'
 
@@ -22,6 +22,8 @@ import { appService } from '@/services/app/multiApp'
 
 export default function AppListPage() {
 	const history = useHistory()
+	const [initLoading, setInitLoading] = useState(false)
+
 	const mode = difyChatRuntimeConfig.get().runningMode
 	const { enableSetting } = useAuth()
 	const isMobile = useIsMobile()
@@ -32,7 +34,10 @@ export default function AppListPage() {
 
 	const { runAsync: getAppList, data: list } = useRequest(
 		() => {
-			return appService.getApps()
+			setInitLoading(true)
+			return appService.getApps().finally(() => {
+				setInitLoading(false)
+			})
 		},
 		{
 			manual: true,
@@ -69,7 +74,11 @@ export default function AppListPage() {
 				}
 			/>
 			<div className="flex-1 bg-theme-main-bg rounded-3xl py-6 overflow-y-auto box-border overflow-x-hidden">
-				{list?.length ? (
+				{initLoading ? (
+					<div className="absolute w-full h-full left-0 top-0 z-50 flex items-center justify-center">
+						<Spin spinning />
+					</div>
+				) : list?.length ? (
 					<Row
 						gutter={[16, 16]}
 						className="px-3 md:px-6"

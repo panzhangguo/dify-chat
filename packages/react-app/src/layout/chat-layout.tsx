@@ -60,7 +60,8 @@ interface IChatLayoutProps {
 }
 
 export default function ChatLayout(props: IChatLayoutProps) {
-	const { extComponents, initLoading, difyApi, renderCenterTitle } = props
+	// renderCenterTitle
+	const { extComponents, initLoading, difyApi } = props
 	const [sidebarOpen, setSidebarOpen] = useState(true)
 	const { themeMode, setThemeMode } = useThemeContext()
 	const { t, lang, setLang } = useLangContext()

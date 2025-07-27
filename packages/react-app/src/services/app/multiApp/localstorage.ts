@@ -28,37 +28,44 @@ class DifyAppService extends DifyAppStore {
 					apiBase: appIfo.apiBase,
 					apiKey: appIfo.apiKey,
 				})
-				const difyAppInfo = await newDifyApiInstance.getAppInfo()
-				const commonInfo: IDifyAppItem = {
-					id: appIfo.id,
-					info: {
-						...difyAppInfo,
-						// 兼容处理，当 Dify API 返回的应用信息中没有 mode 时，默认使用聊天机器人
-						mode: difyAppInfo.mode || AppModeEnums.CHATBOT,
-					},
-					requestConfig: {
-						apiBase: appIfo.apiBase,
-						apiKey: appIfo.apiKey,
-					},
-					answerForm: {
-						// 当工作流需要回复表单给用户填写时，建议开启此功能
-						enabled: false,
-						feedbackText: '',
-					},
-					inputParams: {
-						enableUpdateAfterCvstStarts: false,
-					},
-					extConfig: {
-						language: appIfo.language,
-						conversation: {
-							openingStatement: {
-								displayMode: 'default',
+
+				try {
+					const difyAppInfo = await newDifyApiInstance.getAppInfo()
+					const commonInfo: IDifyAppItem = {
+						id: appIfo.id,
+						info: {
+							...difyAppInfo,
+							// 兼容处理，当 Dify API 返回的应用信息中没有 mode 时，默认使用聊天机器人
+							mode: difyAppInfo.mode || AppModeEnums.CHATBOT,
+						},
+						requestConfig: {
+							apiBase: appIfo.apiBase,
+							apiKey: appIfo.apiKey,
+						},
+						answerForm: {
+							// 当工作流需要回复表单给用户填写时，建议开启此功能
+							enabled: false,
+							feedbackText: '',
+						},
+						inputParams: {
+							enableUpdateAfterCvstStarts: false,
+						},
+						extConfig: {
+							language: appIfo.language,
+							conversation: {
+								openingStatement: {
+									displayMode: 'default',
+								},
 							},
 						},
-					},
+					}
+					result.push(commonInfo)
+				} catch (e) {
+					console.error(e)
 				}
-				result.push(commonInfo)
+
 			}
+			console.log('result', result)
 			return result || []
 		} else {
 			const appJson = localStorage.getItem(APP_LIST_KEY)
