@@ -6,7 +6,7 @@ import enApp from './locales/en-US/app.json';
 import enCommon from './locales/en-US/common.json';
 import zhApp from './locales/zh-CN/app.json';
 import zhCommon from './locales/zh-CN/common.json';
-import { KEY_PREFIX, LocalStorageKeys } from '@dify-chat/helpers';
+import { KEY_PREFIX, LocalStorageKeys, LocalStorageStore } from '@dify-chat/helpers';
 import { LangEnum } from '../constants';
 
 i18n
@@ -15,8 +15,9 @@ i18n
 	// 集成React
 	.use(initReactI18next)
 	.init({
+		// 如果没有缓存数据的语言，则使用浏览器语言
 		// 从浏览器获取默认语言 匹配当前格式
-		lng: navigator.language.replace('-', '_'),
+		lng: LocalStorageStore.get(LocalStorageKeys.LANG) || navigator.language.replace('-', '_'),
 		// 预加载资源
 		resources: {
 			'en_US': {
