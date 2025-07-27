@@ -62,6 +62,8 @@
 		"message": {
 			"created_at": "Reply Time",
 			"not_exist": "Message does not exist",
+			"genertate": "Content is being generated, please wait",
+			"genertated": "Content generation completed",
 			"empty_content": "Message content is empty",
 			"empty_content_tip": "User may have clicked the stop response button during content generation"
 		},
@@ -78,5 +80,9 @@
 		"form": {
 			"validate_fail": "Form validation failed"
 		}
+	},
+	"think": {
+		"ing": "Deep thinking...",
+		"finished": "Deep thinking completed"
 	}
 }

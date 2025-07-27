@@ -311,7 +311,11 @@ export function MarkdownRenderer(props: {
 
 			return `<img src="${_src}" alt="${alt}" ></img>`
 		})
-		result = flow([preprocessThinkTag, preprocessLaTeX])(result)
+
+		// 不需要展示深度思考提示
+		// result = flow([preprocessThinkTag, preprocessLaTeX])(result)
+		result = flow([preprocessLaTeX])(result)
+
 		// 如果是以图片标签开头，则加一个 p
 		return result
 	}, [markdownText, appConfig])

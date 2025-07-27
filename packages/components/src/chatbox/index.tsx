@@ -5,10 +5,11 @@ import { OpeningStatementDisplayMode, Roles, useAppContext, WelcomeConfig } from
 import { isTempId, useIsMobile } from '@dify-chat/helpers'
 import { useLangContext } from '@dify-chat/lang'
 import { useThemeContext } from '@dify-chat/theme'
-import { FormInstance, GetProp, message } from 'antd'
+import { FormInstance, GetProp, message, Space, Spin } from 'antd'
 import classNames from 'classnames'
 import { useDeferredValue, useEffect, useMemo, useRef } from 'react'
 
+import ChatAiImg from '../assets/images/chat-ai.jpeg'
 import LucideIcon from '../lucide-icon'
 import { MessageSender } from '../message-sender'
 import { validateAndGenErrMsgs } from '../utils'
@@ -111,9 +112,13 @@ export const Chatbox = (props: ChatboxProps) => {
 	) : WelcomeConfig.aiIconUrl ? (
 		<img src={`${WelcomeConfig.aiIconUrl}`} />
 	) : (
-		<LucideIcon
-			name="bot"
-			size={18}
+		// <LucideIcon
+		// 	name="bot"
+		// 	size={18}
+		// />
+		<img
+			width={32}
+			src={ChatAiImg}
 		/>
 	)
 
@@ -273,6 +278,7 @@ export const Chatbox = (props: ChatboxProps) => {
 				<div className="flex-1 w-full md:!w-3/4 mx-auto px-3 md:px-0 box-border">
 					{/* 🌟 消息列表 */}
 					<Bubble.List
+						autoScroll
 						items={items}
 						roles={roles}
 					/>
