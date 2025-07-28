@@ -1,3 +1,5 @@
+import { useLangContext } from '@dify-chat/lang'
+import classNames from 'classnames'
 import React, { useEffect, useRef, useState } from 'react'
 
 const hasEndThink = (children: any): boolean => {
@@ -30,7 +32,6 @@ const useThinkTimer = (children: React.JSX.Element) => {
 	const [elapsedTime, setElapsedTime] = useState(0)
 	const [isComplete, setIsComplete] = useState(false)
 	const timerRef = useRef<NodeJS.Timeout>(null)
-
 	useEffect(() => {
 		timerRef.current = setInterval(() => {
 			if (!isComplete) setElapsedTime(Math.floor((Date.now() - startTime) / 100) / 10)
@@ -54,15 +55,18 @@ const useThinkTimer = (children: React.JSX.Element) => {
 export const ThinkBlock = ({ children, ...props }: any) => {
 	const { elapsedTime, isComplete } = useThinkTimer(children)
 	const displayContent = removeEndThink(children)
-
+	const { t } = useLangContext()
 	if (!(props['data-think'] ?? false)) return <details {...props}>{children}</details>
 
 	return (
 		<details
 			{...(!isComplete && { open: true })}
-			className="group"
+			className={classNames({
+				group: true,
+				'mt-2': isComplete,
+			})}
 		>
-			<summary className="flex cursor-pointer select-none list-none items-center whitespace-nowrap font-bold text-theme-desc">
+			<summary className="flex cursor-pointer select-none list-none items-center whitespace-nowrap font-bold text-theme-desc ">
 				<div className="flex shrink-0 items-center">
 					<svg
 						className="mr-2 h-3 w-3 transition-transform duration-500 group-open:rotate-90"
@@ -78,8 +82,8 @@ export const ThinkBlock = ({ children, ...props }: any) => {
 						/>
 					</svg>
 					{isComplete
-						? `已深度思考(${elapsedTime.toFixed(1)}s)`
-						: `深度思考中...(${elapsedTime.toFixed(1)}s)`}
+						? `${t('think.finished')}(${elapsedTime.toFixed(1)}s)`
+						: `${t('think.ing')}(${elapsedTime.toFixed(1)}s)`}
 				</div>
 			</summary>
 			<div className={`border-l mt-1 rounded-lg border-gray-300 ml-5 text-theme-desc`}>

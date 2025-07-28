@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons'
 import { IAgentMessage, IWorkflowNode } from '@dify-chat/api'
 import { useAppContext } from '@dify-chat/core'
+import { useLangContext } from '@dify-chat/lang'
 import { Collapse, CollapseProps, GetProp } from 'antd'
 import { useMemo } from 'react'
 
@@ -22,7 +23,7 @@ interface IWorkflowLogsProps {
 export default function WorkflowLogs(props: IWorkflowLogsProps) {
 	const { items, status, className } = props
 	const { currentApp } = useAppContext()
-
+	const { t } = useLangContext()
 	// Collapse 组件的通用 props
 	const collapseCommonProps: Pick<CollapseProps, 'expandIconPosition'> = useMemo(() => {
 		if (currentApp?.site?.show_workflow_steps) {
@@ -61,13 +62,18 @@ export default function WorkflowLogs(props: IWorkflowLogsProps) {
 			label: (
 				<div className="flex items-center">
 					{status === 'running' ? (
-						<LoadingOutlined />
+						<>
+							<LoadingOutlined />
+							<div className="text-theme-text ml-2">{t('chat.message.genertate')}</div>
+						</>
 					) : status === 'finished' ? (
-						<div className="text-theme-success flex items-center">
-							<LucideIcon name="circle-check" />
-						</div>
+						<>
+							<div className="text-theme-success flex items-center">
+								<LucideIcon name="circle-check" />
+							</div>
+							<div className="text-theme-text ml-2">{t('chat.message.genertated')}</div>
+						</>
 					) : null}
-					<div className="text-theme-text ml-2">工作流</div>
 				</div>
 			),
 			...collapseItemVisibleProps,
