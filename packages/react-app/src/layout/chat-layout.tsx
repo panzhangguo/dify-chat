@@ -256,7 +256,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 						onOk: async () => {
 							// 执行删除操作
 							await onDeleteConversation(currentConversationId)
-							message.success(t('common.delete_success'))
+							message.success(t('common.delete_all_success'))
 						},
 					})
 				},
