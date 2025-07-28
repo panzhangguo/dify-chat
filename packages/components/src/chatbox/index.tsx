@@ -9,6 +9,7 @@ import { FormInstance, GetProp, message } from 'antd'
 import classNames from 'classnames'
 import { useDeferredValue, useEffect, useMemo, useRef } from 'react'
 
+import ChatAiImg from '../assets/images/chat-ai.jpeg'
 import LucideIcon from '../lucide-icon'
 import { MessageSender } from '../message-sender'
 import { validateAndGenErrMsgs } from '../utils'
@@ -111,9 +112,13 @@ export const Chatbox = (props: ChatboxProps) => {
 	) : WelcomeConfig.aiIconUrl ? (
 		<img src={`${WelcomeConfig.aiIconUrl}`} />
 	) : (
-		<LucideIcon
-			name="bot"
-			size={18}
+		// <LucideIcon
+		// 	name="bot"
+		// 	size={18}
+		// />
+		<img
+			width={32}
+			src={ChatAiImg}
 		/>
 	)
 

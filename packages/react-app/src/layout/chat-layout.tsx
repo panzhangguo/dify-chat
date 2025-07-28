@@ -506,7 +506,7 @@ export default function ChatLayout(props: IChatLayoutProps) {
 												onClick={() => {
 													setSidebarOpen(!sidebarOpen)
 												}}
-												name={sidebarOpen ? 'arrow-left-circle' : 'arrow-right-circle'}
+												name={sidebarOpen ? 'panel-left-close' : 'panel-left-close'}
 												className="cursor-pointer hover:text-primary"
 												strokeWidth={1.25}
 												size={28}
