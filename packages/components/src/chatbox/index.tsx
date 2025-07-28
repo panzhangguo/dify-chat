@@ -5,7 +5,7 @@ import { OpeningStatementDisplayMode, Roles, useAppContext, WelcomeConfig } from
 import { isTempId, useIsMobile } from '@dify-chat/helpers'
 import { useLangContext } from '@dify-chat/lang'
 import { useThemeContext } from '@dify-chat/theme'
-import { FormInstance, GetProp, message, Space, Spin } from 'antd'
+import { FormInstance, GetProp, message } from 'antd'
 import classNames from 'classnames'
 import { useDeferredValue, useEffect, useMemo, useRef } from 'react'
 
